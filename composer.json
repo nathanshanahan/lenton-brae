@@ -54,7 +54,6 @@
         "blade-ui-kit/blade-icons": "^1.5",
         "composer/installers": "^2.2",
         "guzzlehttp/guzzle": "^7.5",
-        "johnbillion/extended-cpts": "^5.0",
         "masterminds/html5": "^2.8",
         "oscarotero/env": "^2.1",
         "roots/acorn": "^3.1",
