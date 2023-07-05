@@ -6,7 +6,7 @@ class CookieNotice
 {
 	public function __construct()
 	{
-		add_action('wp_footer', 'App\Bone\CookieNotice::displayNotice');
+		add_action('wp_footer', [__CLASS__, 'displayNotice']);
 	}
 
 	public static function displayNotice()
