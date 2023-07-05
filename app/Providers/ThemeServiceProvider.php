@@ -4,6 +4,13 @@ namespace App\Providers;
 
 use Illuminate\Support\Collection;
 use Roots\Acorn\Sage\SageServiceProvider;
+use App\Bone\Theme\CookieNotice;
+use App\Bone\Theme\Maintenance;
+use App\Bone\Theme\Security;
+use App\Bone\Theme\Theme;
+use App\Bone\Theme\Emails;
+use App\Bone\Theme\Headless;
+use App\Bone\Theme\JWTHelper;
 
 class ThemeServiceProvider extends SageServiceProvider
 {
@@ -57,5 +64,20 @@ class ThemeServiceProvider extends SageServiceProvider
     public function boot()
     {
         parent::boot();
+
+        $this->initBoneHelperClasses();
+    }
+
+    /**
+     *
+     */
+    public function initBoneHelperClasses() {
+        new Theme();
+        new Security();
+        new Emails();
+        new Maintenance();
+        new CookieNotice();
+        new Headless();
+        new JWTHelper();
     }
 }
