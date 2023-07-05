@@ -1,0 +1,445 @@
+{
+    "key": "group_5d3d6b6ab6c99",
+    "title": "Site Options",
+    "fields": [
+        {
+            "key": "field_5d3d6b73d11cc",
+            "label": "Tracking",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5d3d6b8ed11cd",
+            "label": "GA Code",
+            "name": "ga_code",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Your Google Analytics Tracking code. Should be in the format of 'UA-XXXXX-XX'",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_60a35684d1149",
+            "label": "GTM Code",
+            "name": "gtm_code",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Your Google Tag Manager Tracking code. Should be in the format of 'GTM-XXXXXXX'",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_60a356b7d114a",
+            "label": "FB Pixel",
+            "name": "fb_pixel",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Add in your Facebook pixel ID. Should be in the format of 'GTM-XXXXXXX'",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5d44f2d95e979",
+            "label": "Emails",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5e90208965f9e",
+            "label": "Disable Password Changed Notifications",
+            "name": "disable_send_password_change_notifications",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "By ticking this, the administrator and user will not receive emails about passwords being changed.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5e9021e6f6036",
+            "label": "Default From Email Address",
+            "name": "default_from_email_address",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "Enter the default email address for notification emails from the website. By default, this is wordpress@domain.com",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_5e9021f8f6037",
+            "label": "Default From Email Name",
+            "name": "default_from_email_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Enter the default 'name' for emails from the website to come from, e.g. 'Site Name'.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_5e90208165f9d",
+            "label": "Maintenance",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5d44f30b5e97b",
+            "label": "Enable Maintenance Mode",
+            "name": "enable_maintenance_mode",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "When checked, this will put the site into maintenance mode. Only admin users logged in will be able to access the site.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5d44f2e55e97a",
+            "label": "Message",
+            "name": "maintenance_message",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Enter a message to show when maintenance mode is turned on. Leave blank for default 'Site under maintenance' message.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5e903d33d3169",
+            "label": "Socials",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5e903d3cd316a",
+            "label": "Instagram Access Token",
+            "name": "instagram_access_token",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5e91744fe8db7",
+            "label": "Cookie Notice Popup",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5e917458e8db8",
+            "label": "Enable cookie notice popup",
+            "name": "enable_cookie_notice_popup",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Check this to enable a notice about cookies - required for GDPR compliance.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5e917473e8db9",
+            "label": "Message",
+            "name": "cookie_notice_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Enter the text users see in the popup.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "By using our website, you agree to the use of our cookies.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_5e91749de8dba",
+            "label": "Button Text",
+            "name": "cookie_notice_button_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Enter the button text to accept the notice.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "OK",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5e91750ee8dbb",
+            "label": "Read More",
+            "name": "cookie_notice_read_more",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Enter the link the read more should go to.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_5e9d1f7ce3439",
+            "label": "Login Page",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5e9d1f86e343a",
+            "label": "Use Custom Branding",
+            "name": "use_custom_branding",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Enable this to load up custom branding.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5e9d1f98e343b",
+            "label": "Logo",
+            "name": "custom_login_logo",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5e9d1fa3e343c",
+            "label": "Background Colour",
+            "name": "custom_login_background",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "enable_opacity": false,
+            "return_format": "string"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-site-options"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 1,
+    "modified": 1688544406
+}
