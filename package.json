@@ -25,6 +25,7 @@
     "@roots/bud-imagemin": "6.13.1",
     "@roots/bud-preset-wordpress": "6.13.1",
     "@roots/bud-prettier": "6.13.1",
+    "@roots/bud-sass": "6.13.1",
     "@roots/bud-stylelint": "6.13.1",
     "@roots/bud-swc": "6.13.1",
     "@roots/eslint-config": "6.13.1",
@@ -36,6 +37,7 @@
   },
   "dependencies": {
     "@roots/wordpress-hmr": "6.13.1",
-    "alpinejs": "3.12.0"
+    "alpinejs": "3.12.0",
+    "caniuse-lite": "^1.0.30001512"
   }
 }
