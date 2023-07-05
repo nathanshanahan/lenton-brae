@@ -1,34 +1,31 @@
 <!doctype html>
 <html <?php language_attributes(); ?>>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <?php wp_head(); ?>
-        @include('utils.styles')
-    </head>
+    @include('partials.head')
 
     <body <?php body_class(); ?>>
+        @include('partials.tracking--body')
+
         <?php wp_body_open(); ?>
+
+        @include('partials.svg-symbols')
+
         <?php do_action('get_header'); ?>
 
-        <div id="app">
-            <a class="sr-only focus:not-sr-only" href="#main">
-                {{ __('Skip to content') }}
-            </a>
+        @include('partials.skip-links')
 
-            @include('sections.header')
+        @include('partials.header')
 
-            <main id="main" class="max-w-5xl mx-auto">
-                <div class="{{ $containerInnerClasses }}">
-                    @yield('content')
-                </div>
+        <div id="body-wrapper" class="body-wrapper swup-page-loader">
+            <main id="main" class="">
+                @yield('content')
             </main>
-
-            @include('sections.footer')
         </div>
+
+        @include('partials.footer')
 
         <?php do_action('get_footer'); ?>
         <?php wp_footer(); ?>
+
         @include('utils.scripts')
     </body>
 </html>

@@ -1,3 +1,3 @@
-<h1 class="font-bold text-4xl mb-6">
+<h1 class="">
     {!! $title !!}
 </h1>

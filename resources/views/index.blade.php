@@ -1,19 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('partials.page-header')
-
-    @if (! have_posts())
-        <x-alert type="warning">
-            {!! __('Sorry, no results were found.', 'radicle') !!}
-        </x-alert>
-
-        {!! get_search_form(false) !!}
-    @endif
-
     @while(have_posts()) @php(the_post())
-        @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
+        @include('partials.pagebuilder')
     @endwhile
-
-    {!! get_the_posts_navigation() !!}
 @endsection
