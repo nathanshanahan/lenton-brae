@@ -14,55 +14,7 @@ export default async (bud: Bud) => {
     .copyDir(`images`)
 
     .setPublicPath(`/dist/`)
-    .experiments(`topLevelAwait`, true)
-
-    .wpjson.setSettings({
-      color: {
-        custom: false,
-        customDuotone: false,
-        customGradient: false,
-        defaultDuotone: false,
-        defaultGradients: false,
-        defaultPalette: false,
-        duotone: [],
-      },
-      custom: {
-        spacing: {},
-        typography: {
-          "font-size": {},
-          "line-height": {},
-        },
-      },
-      layout: {
-        contentSize: `64rem`,
-      },
-      spacing: {
-        padding: true,
-        units: [`px`, `%`, `em`, `rem`, `vw`, `vh`],
-      },
-      typography: {
-        customFontSize: false,
-        dropCap: undefined,
-      },
-    })
-    .setStyles({
-      spacing: {
-        blockGap: `1.5rem`,
-        padding: {
-          left: `1.5rem`,
-          right: `1.5rem`,
-        },
-      },
-      typography: {
-        fontFamily: `var(--wp--preset--font-family--sans)`,
-        fontSize: `var(--wp--preset--font-size--normal)`,
-      },
-    })
-    .setPath(bud.path(`public/content/themes/radicle/theme.json`));
-
-  bud.when(`tailwind` in bud, ({ wpjson }) =>
-    wpjson.useTailwindColors().useTailwindFontFamily().useTailwindFontSize()
-  );
+    .experiments(`topLevelAwait`, true);
 
   await bud.tapAsync(sourceThemeValues);
 
@@ -85,7 +37,6 @@ export default async (bud: Bud) => {
       stylelint
         .extends([
           `@roots/sage/stylelint-config`,
-          `@roots/bud-tailwindcss/stylelint-config`,
         ])
         .setFix(true)
         .setFailOnWarning(bud.isProduction)
