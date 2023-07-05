@@ -63,7 +63,6 @@
         "roots/wordpress": "6.2.2",
         "roots/wp-config": "1.0.0",
         "roots/wp-password-bcrypt": "1.1.0",
-        "roots/wp-stage-switcher": "^2.2",
         "vlucas/phpdotenv": "^5.5",
         "wpackagist-plugin/safe-svg": "^2.1"
     },

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78b10f2e968be682f858a4ea3d872f97",
+    "content-hash": "5c334b1c34d8c360c8721c4c490b2e98",
     "packages": [
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -3996,63 +3996,6 @@
                 }
             ],
             "time": "2021-10-31T01:18:58+00:00"
-        },
-        {
-            "name": "roots/wp-stage-switcher",
-            "version": "2.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/roots/wp-stage-switcher.git",
-                "reference": "48f0deee6b0df869054ac5a2c30e08dd13995aa6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/roots/wp-stage-switcher/zipball/48f0deee6b0df869054ac5a2c30e08dd13995aa6",
-                "reference": "48f0deee6b0df869054ac5a2c30e08dd13995aa6",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "~1.0 || ~2.0",
-                "php": ">=5.4.0"
-            },
-            "type": "wordpress-plugin",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ben Word",
-                    "email": "ben@benword.com",
-                    "homepage": "https://github.com/retlehs"
-                },
-                {
-                    "name": "Scott Walkinshaw",
-                    "email": "scott.walkinshaw@gmail.com",
-                    "homepage": "https://github.com/swalkinshaw"
-                }
-            ],
-            "description": "WordPress plugin that allows you to switch between different environments from the admin bar",
-            "homepage": "https://roots.io/plugin/stage-switcher/",
-            "keywords": [
-                "wordpress"
-            ],
-            "support": {
-                "forum": "https://discourse.roots.io",
-                "issues": "https://github.com/roots/wp-stage-switcher/issues",
-                "source": "https://github.com/roots/wp-stage-switcher/tree/2.2.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/roots",
-                    "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/rootsdev",
-                    "type": "patreon"
-                }
-            ],
-            "time": "2022-05-31T19:37:57+00:00"
         },
         {
             "name": "symfony/console",
