@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c334b1c34d8c360c8721c4c490b2e98",
+    "content-hash": "114a6246529dd5d6e1bdc2a8ea97e154",
     "packages": [
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -353,6 +353,18 @@
             "time": "2022-08-20T06:45:11+00:00"
         },
         {
+            "name": "deliciousbrains-plugin/wp-migrate-db-pro",
+            "version": "2.6.8",
+            "dist": {
+                "type": "zip",
+                "url": "https://composer.deliciousbrains.com/?wc-api=delicious-brains&request=composer_download&package=wp-migrate-db-pro&version=2.6.8&composer_key=813E049E0ADE1744A87FB0D8779ED40A"
+            },
+            "require": {
+                "composer/installers": "~1.0 || ~2.0"
+            },
+            "type": "wordpress-plugin"
+        },
+        {
             "name": "doctrine/inflector",
             "version": "2.0.8",
             "source": {
@@ -442,6 +454,73 @@
                 }
             ],
             "time": "2023-06-16T13:40:37+00:00"
+        },
+        {
+            "name": "ffraenz/private-composer-installer",
+            "version": "v5.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ffraenz/private-composer-installer.git",
+                "reference": "8655e3da4e8f99203f13ccca33b9ab953ad30a31"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ffraenz/private-composer-installer/zipball/8655e3da4e8f99203f13ccca33b9ab953ad30a31",
+                "reference": "8655e3da4e8f99203f13ccca33b9ab953ad30a31",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": "^7.1 || ^8.0",
+                "vlucas/phpdotenv": "^4.1 || ^5.2"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0 || ^2.0",
+                "laminas/laminas-coding-standard": "^2.0",
+                "symfony/phpunit-bridge": "^5.1",
+                "symfony/process": "^4.4 || ^5.1"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "FFraenz\\PrivateComposerInstaller\\Plugin",
+                "plugin-modifies-downloads": true
+            },
+            "autoload": {
+                "psr-4": {
+                    "FFraenz\\PrivateComposerInstaller\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fränz Friederes",
+                    "email": "fraenz@frieder.es",
+                    "homepage": "https://fraenz.frieder.es"
+                }
+            ],
+            "description": "A composer install helper for private packages",
+            "keywords": [
+                "composer",
+                "env",
+                "plugin",
+                "private",
+                "wordpress",
+                "wp"
+            ],
+            "support": {
+                "issues": "https://github.com/ffraenz/private-composer-installer/issues",
+                "source": "https://github.com/ffraenz/private-composer-installer/tree/v5.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/ffraenz",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-10-30T09:35:33+00:00"
         },
         {
             "name": "fruitcake/php-cors",
@@ -575,6 +654,62 @@
                 }
             ],
             "time": "2023-02-25T20:23:15+00:00"
+        },
+        {
+            "name": "gravityforms/gravityforms",
+            "version": "2.6.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/bone_digital/gravityforms.git",
+                "reference": "feaa3afd434ca72c685a87b9b503bc50cb14666d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/bone_digital/gravityforms/get/feaa3afd434ca72c685a87b9b503bc50cb14666d.zip",
+                "reference": "feaa3afd434ca72c685a87b9b503bc50cb14666d",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://bone-digital.repo.repman.io/dists/%package%/%version%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://bone-digital.repo.repman.io/downloads",
+            "homepage": "https://bitbucket.org/bone_digital/gravityforms",
+            "support": {
+                "source": "https://bitbucket.org/bone_digital/gravityforms/src/feaa3afd434ca72c685a87b9b503bc50cb14666d/?at=2.6.3.4"
+            },
+            "time": "2022-07-04T02:25:01+00:00"
+        },
+        {
+            "name": "gravityforms/gravityformsmailchimp",
+            "version": "5.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/bone_digital/gravityformsmailchimp.git",
+                "reference": "87bdd1b6871bffbd39d2767c0bc608cfcf5720f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/bone_digital/gravityformsmailchimp/get/87bdd1b6871bffbd39d2767c0bc608cfcf5720f9.zip",
+                "reference": "87bdd1b6871bffbd39d2767c0bc608cfcf5720f9",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://bone-digital.repo.repman.io/dists/%package%/%version%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://bone-digital.repo.repman.io/downloads",
+            "homepage": "https://bitbucket.org/bone_digital/gravityformsmailchimp",
+            "support": {
+                "source": "https://bitbucket.org/bone_digital/gravityformsmailchimp/src/87bdd1b6871bffbd39d2767c0bc608cfcf5720f9/?at=5.0.1"
+            },
+            "time": "2022-04-12T05:11:12+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -3331,6 +3466,19 @@
             "time": "2023-04-15T23:01:58+00:00"
         },
         {
+            "name": "rankmath/seo-by-rank-math-pro",
+            "version": "3.0.5",
+            "dist": {
+                "type": "zip",
+                "url": "https://rankmath.com/download/510590/?username={%WP_PLUGIN_RANKMATH_USERNAME}&api_key={%WP_PLUGIN_RANKMATH_API_KEY}"
+            },
+            "require": {
+                "composer/installers": "*",
+                "ffraenz/private-composer-installer": "^v5.0.1"
+            },
+            "type": "wordpress-plugin"
+        },
+        {
             "name": "roots/acorn",
             "version": "v3.2.0",
             "source": {
@@ -3996,6 +4144,35 @@
                 }
             ],
             "time": "2021-10-31T01:18:58+00:00"
+        },
+        {
+            "name": "searchwp/searchwp",
+            "version": "4.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/bone_digital/searchwp.git",
+                "reference": "8c0938221a3e256590f58b353bde2d17424739e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/bone_digital/searchwp/get/8c0938221a3e256590f58b353bde2d17424739e9.zip",
+                "reference": "8c0938221a3e256590f58b353bde2d17424739e9",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://bone-digital.repo.repman.io/dists/%package%/%version%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://bone-digital.repo.repman.io/downloads",
+            "description": "The best WordPress search you can find",
+            "homepage": "https://bitbucket.org/bone_digital/searchwp",
+            "support": {
+                "source": "https://bitbucket.org/bone_digital/searchwp/src/8c0938221a3e256590f58b353bde2d17424739e9/?at=4.2.2"
+            },
+            "time": "2022-04-12T05:18:41+00:00"
         },
         {
             "name": "symfony/console",
@@ -6098,6 +6275,24 @@
             "time": "2022-03-08T17:03:00+00:00"
         },
         {
+            "name": "wpackagist-plugin/post-types-order",
+            "version": "2.0.9",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/post-types-order/",
+                "reference": "tags/2.0.9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/post-types-order.2.0.9.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/post-types-order/"
+        },
+        {
             "name": "wpackagist-plugin/safe-svg",
             "version": "2.1.1",
             "source": {
@@ -6114,6 +6309,92 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/safe-svg/"
+        },
+        {
+            "name": "wpackagist-plugin/seo-by-rank-math",
+            "version": "1.0.118",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/seo-by-rank-math/",
+                "reference": "tags/1.0.118"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.118.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/seo-by-rank-math/"
+        },
+        {
+            "name": "wpackagist-plugin/taxonomy-terms-order",
+            "version": "1.7.7",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/taxonomy-terms-order/",
+                "reference": "tags/1.7.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/taxonomy-terms-order.1.7.7.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/taxonomy-terms-order/"
+        },
+        {
+            "name": "wpackagist-theme/twentytwentythree",
+            "version": "1.1",
+            "source": {
+                "type": "svn",
+                "url": "https://themes.svn.wordpress.org/twentytwentythree/",
+                "reference": "1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/theme/twentytwentythree.1.1.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-theme",
+            "homepage": "https://wordpress.org/themes/twentytwentythree/"
+        },
+        {
+            "name": "wpengine/advanced-custom-fields-pro",
+            "version": "6.1.7",
+            "dist": {
+                "type": "zip",
+                "url": "https://connect.advancedcustomfields.com/v2/plugins/composer_download?p=pro&t=6.1.7"
+            },
+            "require": {
+                "composer/installers": "~1.0 || ~2.0"
+            },
+            "replace": {
+                "wpackagist-plugin/advanced-custom-fields": "self.version"
+            },
+            "type": "wordpress-plugin"
+        },
+        {
+            "name": "wpmudev/wp-smush-pro",
+            "version": "3.13.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://wpmudev.com/download/smush-pro-3.13.1.zip"
+            },
+            "require": {
+                "composer/installers": "1.* || 2.*"
+            },
+            "type": "wordpress-plugin",
+            "license": [
+                "GPL-2.0"
+            ],
+            "description": "Smush Pro",
+            "homepage": "https://wpmudev.com/project/wp-smush-pro/"
         }
     ],
     "packages-dev": [

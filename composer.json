@@ -36,6 +36,38 @@
                 "wpackagist-plugin/*",
                 "wpackagist-theme/*"
             ]
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "rankmath/seo-by-rank-math-pro",
+                "type": "wordpress-plugin",
+                "version": "3.0.5",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://rankmath.com/download/510590/?username={%WP_PLUGIN_RANKMATH_USERNAME}&api_key={%WP_PLUGIN_RANKMATH_API_KEY}"
+                },
+                "require": {
+                    "composer/installers": "*",
+                    "ffraenz/private-composer-installer": "^v5.0.1"
+                }
+            }
+        },
+        {
+            "type": "composer",
+            "url": "https://premium.wpmudev.org"
+        },
+        {
+            "type": "composer",
+            "url": "https://composer.deliciousbrains.com/813E049E0ADE1744A87FB0D8779ED40A"
+        },
+        {
+            "type": "composer",
+            "url": "https://bone-digital.repo.repman.io"
+        },
+        {
+            "type": "composer",
+            "url": "https://connect.advancedcustomfields.com"
         }
     ],
     "autoload": {
@@ -64,7 +96,18 @@
         "roots/wp-config": "1.0.0",
         "roots/wp-password-bcrypt": "1.1.0",
         "vlucas/phpdotenv": "^5.5",
-        "wpackagist-plugin/safe-svg": "^2.1"
+        "wpackagist-plugin/safe-svg": "^2.1",
+        "wpackagist-theme/twentytwentythree": "^1.0",
+        "wpackagist-plugin/seo-by-rank-math": "*",
+        "wpackagist-plugin/post-types-order": "*",
+        "wpackagist-plugin/taxonomy-terms-order": "*",
+        "gravityforms/gravityforms": "*",
+        "gravityforms/gravityformsmailchimp": "*",
+        "searchwp/searchwp": "*",
+        "wpmudev/wp-smush-pro": "*",
+        "rankmath/seo-by-rank-math-pro": "*",
+        "wpengine/advanced-custom-fields-pro": "*",
+        "deliciousbrains-plugin/wp-migrate-db-pro": "*"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0",

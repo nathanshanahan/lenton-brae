@@ -7,6 +7,7 @@ public/content/upgrade
 public/content/uploads/*
 !public/content/uploads/.gitkeep
 public/content/cache/*
+public/content/themes/twenty*
 public/dist/*
 
 # WordPress
