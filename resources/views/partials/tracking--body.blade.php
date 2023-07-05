@@ -1,6 +1,2 @@
-{{-- TODO
-
-{!! App::googleTagManagerBody() !!}
-{!! App::facebookPixelBody() !!}
-
---}}
+{!! $app::googleTagManagerBody() !!}
+{!! $app::facebookPixelBody() !!}

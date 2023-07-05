@@ -1,7 +1,3 @@
-{{-- TODO
-
-{!! App::googleAnalytics() !!}
-{!! App::googleTagManagerHead() !!}
-{!! App::facebookPixelHead() !!}
-
---}}
+{!! $app::googleAnalytics() !!}
+{!! $app::googleTagManagerHead() !!}
+{!! $app::facebookPixelHead() !!}
