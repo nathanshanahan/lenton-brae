@@ -193,7 +193,7 @@ return [
         /*
          * Application Service Providers...
          */
-
+        App\Providers\ACFServiceProvider::class,
     ],
 
     /*
