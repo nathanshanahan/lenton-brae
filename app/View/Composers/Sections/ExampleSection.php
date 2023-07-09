@@ -1,11 +1,11 @@
 <?php
 
-namespace App\View\Composers\Modules;
+namespace App\View\Composers\Sections;
 
 use Roots\Acorn\View\Composer;
 use App\Bone\PageBuilder;
 
-class ExampleModule extends Composer
+class ExampleSection extends Composer
 {
     /**
      * Data to be passed to view before rendering, but after merging.
@@ -14,11 +14,11 @@ class ExampleModule extends Composer
      */
     public function override()
     {
-		$module_options = PageBuilder::computeModuleOptions($this->data, [
-			'anchor_id' => uniqid('example-module-'),
+		$section_options = PageBuilder::computeSectionOptions($this->data, [
+			'anchor_id' => uniqid('example-section-'),
 		]);
 
-		$overrides = $module_options;
+		$overrides = $section_options;
 
 		// add other modifications here
 

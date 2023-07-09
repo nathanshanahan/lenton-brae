@@ -19,42 +19,12 @@
             "layouts": {
                 "layout_5d844c1ab282d": {
                     "key": "layout_5d844c1ab282d",
-                    "name": "example_module",
+                    "name": "example-module",
                     "label": "EXAMPLE Module",
                     "display": "block",
                     "sub_fields": [
                         {
                             "key": "field_5e913475e9ddb",
-                            "label": "Content",
-                            "name": "content",
-                            "aria-label": "",
-                            "type": "wysiwyg",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "tabs": "all",
-                            "toolbar": "full",
-                            "media_upload": 1,
-                            "delay": 0
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
-                },
-                "layout_64a5471cb1567": {
-                    "key": "layout_64a5471cb1567",
-                    "name": "more_text",
-                    "label": "More Text",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_64a5471cb1568",
                             "label": "Content",
                             "name": "content",
                             "aria-label": "",
@@ -103,5 +73,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688594418
+    "modified": 1688616154
 }

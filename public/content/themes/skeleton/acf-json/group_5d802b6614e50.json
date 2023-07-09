@@ -19,7 +19,7 @@
             "layouts": {
                 "layout_5d8431ef1364f": {
                     "key": "layout_5d8431ef1364f",
-                    "name": "example_section",
+                    "name": "example-section",
                     "label": "EXAMPLE Section",
                     "display": "block",
                     "sub_fields": [
@@ -60,7 +60,7 @@
                             "layouts": {
                                 "layout_5d844c1ab282d": {
                                     "key": "layout_5d844c1ab282d",
-                                    "name": "example_module",
+                                    "name": "example-module",
                                     "label": "EXAMPLE Module",
                                     "display": "block",
                                     "sub_fields": [
@@ -130,5 +130,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688594432
+    "modified": 1688616107
 }

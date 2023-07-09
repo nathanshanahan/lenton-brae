@@ -137,4 +137,94 @@ class PageBuilder
 			'modules'	=> $modules,
 		];
 	}
+
+
+	/**
+	 * computeModuleOptions
+	 *
+	 * Parses a Fluent data object for the options found in the 'module Options' ACF fields
+	 * and computes them for use with module.blade templates. Returns the computed values only.
+	 *
+	 * @param Illuminate\Support\Fluent $module_data
+	 * @return array
+	 */
+	public static function computeModuleOptions($data, $overrides = []) {
+		if (empty($data)) {
+			return [];
+		}
+
+		if (!is_array($overrides)) {
+			$overrides = [];
+		}
+
+		// vars for html class and other attributes to be applied to the module's outer wrapper
+		// initialise if necessary
+		$options['module_computed_classes'] = $overrides['module_computed_classes'] ?? '';
+		$options['module_computed_attributes'] = $overrides['module_computed_attributes'] ?? '';
+
+		// 'block' in the sense used by BEM naming scheme
+		$layout = $data->get('acf_fc_layout');
+		$block = $overrides['block'] ?? "m-{$layout}";
+		$options['block'] = $block;
+
+		// add to computed classes
+		$options['module_computed_classes'] .= $options['module_computed_classes'] ? " $block" : $block;
+
+		$atts = [];
+
+		$anchor_id = $overrides['anchor_id'] ?? $data->get('anchor_id');
+		if (!empty($anchor_id)) {
+		    $atts['id'] = sanitize_title($anchor_id);
+		}
+
+		$options['module_attributes'] = $atts;
+		$options['module_computed_attributes'] = \App\atts_list_to_string($atts);
+
+		return $options;
+	}
+
+
+	/**
+	 * computeSectionOptions
+	 *
+	 * Parses a Fluent data object for the options found in the 'module Options' ACF fields
+	 * and computes them for use with module.blade templates. Returns the computed values only.
+	 *
+	 * @param Illuminate\Support\Fluent $data
+	 * @return array
+	 */
+	public static function computeSectionOptions($data, $overrides = []) {
+		if (empty($data)) {
+			return [];
+		}
+
+		if (!is_array($overrides)) {
+			$overrides = [];
+		}
+
+		// vars for html class and other attributes to be applied to the module's outer wrapper
+		// initialise if necessary
+		$options['section_computed_classes'] = $overrides['section_computed_classes'] ?? '';
+		$options['section_computed_attributes'] = $overrides['section_computed_attributes'] ?? '';
+
+		// 'block' in the sense used by BEM naming scheme
+		$layout = $data->get('acf_fc_layout');
+		$block = $overrides['block'] ?? "s-{$layout}";
+		$options['block'] = $block;
+
+		// add to computed classes
+		$options['section_computed_classes'] .= $options['section_computed_classes'] ? " $block" : $block;
+
+		$atts = [];
+
+		$anchor_id = $overrides['anchor_id'] ?? $data->get('anchor_id');
+		if (!empty($anchor_id)) {
+		    $atts['id'] = sanitize_title($anchor_id);
+		}
+
+		$options['section_attributes'] = $atts;
+		$options['section_computed_attributes'] = \App\atts_list_to_string($atts);
+
+		return $options;
+	}
 }
