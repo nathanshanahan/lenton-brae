@@ -31,10 +31,10 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('load', () => {
-
+	//
 });
 
 // Load Events when using Swup
 swup.on('contentReplaced', () => {
-
+	//
 });
