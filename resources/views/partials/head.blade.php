@@ -4,13 +4,7 @@
 
     @include('utils.styles')
 
-    {{-- TODO
-
-    {!! App::googleAnalytics() !!}
-	{!! App::googleTagManagerHead() !!}
-	{!! App::facebookPixelHead() !!}
-
-    --}}
+	@include('partials.tracking--head')
 
     @php wp_head() @endphp
 </head>

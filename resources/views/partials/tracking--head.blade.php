@@ -1,3 +1,3 @@
-{!! $app::googleAnalytics() !!}
-{!! $app::googleTagManagerHead() !!}
-{!! $app::facebookPixelHead() !!}
+{!! $App::googleAnalytics() !!}
+{!! $App::googleTagManagerHead() !!}
+{!! $App::facebookPixelHead() !!}

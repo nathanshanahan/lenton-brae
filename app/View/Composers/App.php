@@ -24,7 +24,7 @@ class App extends Composer
     {
         return [
             'siteName' => $this->siteName(),
-			'app' => new \App\Bone\App(),
+			'App' => new \App\Bone\App(),
         ];
     }
 
