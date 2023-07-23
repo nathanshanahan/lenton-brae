@@ -111,4 +111,16 @@ return [
          */
         'core-block-patterns',
     ],
+
+	/**
+	 * List of plugins that the theme can't function without. For instance, ACF is so integral
+	 * to views the theme that it's not worth trying to run the theme if it isn't installed and active.
+	 *
+	 * Polylang is another example where a plugin needs to be used pervasively and we most likely aren't
+	 * checking for it's existence everywhere it's used.
+	 */
+	'required_plugins' => [
+		['name' => 'ACF', 'path' => 'advanced-custom-fields-pro/acf.php' ],
+		// ['name' => 'Polylang Pro', 'path' => 'polylang-pro/polylang.php' ],
+	],
 ];

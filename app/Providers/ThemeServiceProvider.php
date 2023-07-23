@@ -23,6 +23,8 @@ class ThemeServiceProvider extends SageServiceProvider
     {
         parent::register();
 
+		$this->checkRequiredPluginsAreActive();
+
         /**
          * Register theme support and navigation menus from the theme config.
          *
@@ -76,6 +78,51 @@ class ThemeServiceProvider extends SageServiceProvider
         $this->initBoneHelperClasses();
 		$this->legacyThemeSetups();
     }
+
+	public function checkRequiredPluginsAreActive() {
+		$required_plugins = config('theme.required_plugins', []);
+
+		if (empty($required_plugins)) {
+			return;
+		}
+
+		$errors = [];
+		foreach( $required_plugins as $plugin ) {
+			// don't seem to be able to use is_plugin_active() here, perhaps it hasn't loaded yet?
+			if( !in_array($plugin['path'], apply_filters('active_plugins', get_option('active_plugins'))) ) {
+				$errors[] = $plugin;
+			}
+		}
+
+		if ($errors) {
+			$plugin_names = array_map(function($plugin) {
+				return $plugin['name'];
+			}, $errors);
+
+			/**
+			 * In admin just show notices so the user can install the plugins. Throw
+			 * early exception on frontend so we can show a more helpful error message.
+			 */
+			if (is_admin()) {
+				add_action('admin_notices', function() use ($plugin_names) {
+					?>
+						<div class="notice notice-error">
+							<p>
+								<b>Required plugins missing!</b>
+								<br>
+								The following plugins need to be <em>installed and active</em> for this theme to function properly: <?= implode(', ', $plugin_names) ?>
+							</p>
+						</div>
+					<?php
+				});
+			}
+			else {
+				add_action('after_setup_theme', function () use ($plugin_names): void {
+					throw new \Exception('Required plugins must be installed and active: ' . implode(', ', $plugin_names));
+				});
+			}
+		}
+	}
 
     /**
      *
