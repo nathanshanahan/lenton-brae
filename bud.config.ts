@@ -5,8 +5,8 @@ import type { Bud } from "@roots/bud";
  */
 export default async (bud: Bud) => {
   bud
-    .proxy(`http://projectname.test`)
-    .serve(`http://localhost:3000`)
+    .proxy(process.env.WP_HOME)
+    .serve(process.env.DEV_URL || `http://localhost:3000`)
     .watch([bud.path(`resources/views`), bud.path(`app`)])
 
     .entry(`app`, [`@scripts/app`, `@styles/app`])
