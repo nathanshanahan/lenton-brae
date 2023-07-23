@@ -36,9 +36,10 @@ export default async (bud: Bud) => {
     .when(`stylelint` in bud, ({ stylelint }) =>
       stylelint
         .extends([
-          `@roots/sage/stylelint-config`,
+			'stylelint-config-recommended-scss',
         ])
-        .setFix(true)
+		.setRules({})
+        .setFix(false)
         .setFailOnWarning(bud.isProduction)
     )
 
