@@ -157,3 +157,84 @@ Config::apply();
 if (!defined('ABSPATH')) {
     define('ABSPATH', $webroot_dir . '/wp/');
 }
+
+
+/**
+ * White Label Kinsta Plugin
+ */
+define('KINSTAMU_WHITELABEL', true);
+
+/**
+ * Whether or not to run in headless mode
+ */
+$bone_headless = env('BONE_HEADLESS')? : false;
+define('BONE_HEADLESS', $bone_headless);
+
+/**
+ * Front end url for headless mode
+ */
+$bone_headless_url = env('BONE_HEADLESS_FRONTEND_URL')? : false;
+define('BONE_HEADLESS_FRONTEND_URL', $bone_headless_url);
+
+/**
+ * Custom plugin licenses
+ */
+//Gravity Forms
+$gravity_forms_license = env('WP_PLUGIN_GF_KEY') ?: '';
+if(!empty($gravity_forms_license))
+{
+	define('GF_LICENSE_KEY', $gravity_forms_license);
+}
+
+//Migrate DB Pro
+$wpmdbpro_key = env('WP_PLUGIN_MIGRATE_DB_PRO') ?: '';
+if(!empty($wpmdbpro_key))
+{
+	define('WPMDB_LICENCE', $wpmdbpro_key);
+}
+
+//ACF Pro Key
+$acf_pro_key = env('ACF_PRO_KEY') ?: '';
+if(!empty($acf_pro_key))
+{
+	define('ACF_PRO_LICENSE', $acf_pro_key);
+}
+
+//Smush API Key - used for Smush Pro Plugin
+$wpmudev_key = env('WP_PLUGIN_WPMUDEV') ?: '';
+if(!empty($wpmudev_key))
+{
+	define('WPMUDEV_APIKEY', $wpmudev_key);
+}
+
+//SearchWP Key
+$searchwp_key = env('WP_PLUGIN_SEARCH_WP_KEY') ?: '';
+if(!empty($searchwp_key))
+{
+	define('SEARCHWP_LICENSE_KEY', $searchwp_key);
+}
+
+//JWT Auth Secret
+$jwt_auth_secret = env('JWT_AUTH_SECRET_KEY') ?: '';
+if(!empty($jwt_auth_secret))
+{
+	define('JWT_AUTH_SECRET_KEY', $jwt_auth_secret);
+}
+
+//Bugherd
+$bugherd_api_key = env('BUGHERD_API_KEY') ?: '';
+$bugherd_enabled = env('BUGHERD_ENABLED') ?: false;
+if(!empty($bugherd_api_key))
+{
+	define('BUGHERD_API_KEY', $bugherd_api_key);
+}
+
+define('BUGHERD_ENABLED', !empty($bugherd_enabled) && !empty($bugherd_api_key));
+
+
+// Google Places API
+$google_places_api_key = env('PLACES_API_KEY') ?: '';
+if(!empty($google_places_api_key))
+{
+	define('PLACES_API_KEY', $google_places_api_key);
+}
