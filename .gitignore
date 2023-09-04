@@ -1,18 +1,16 @@
 # Application
-public/content/plugins/*
-!public/content/plugins/.gitkeep
-public/content/mu-plugins/*/
-!public/content/mu-plugins/editor/
-public/content/upgrade
-public/content/uploads/*
-!public/content/uploads/.gitkeep
-public/content/cache/*
-public/content/themes/twenty*
-public/dist/*
+web/app/plugins/*
+!web/app/plugins/.gitkeep
+web/app/mu-plugins/*/
+web/app/themes/twentytwentythree/
+web/app/upgrade
+web/app/uploads/*
+!web/app/uploads/.gitkeep
+web/app/cache/*
 
 # WordPress
-public/wp
-public/.htaccess
+web/wp
+web/.htaccess
 
 # Logs
 *.log
@@ -30,11 +28,3 @@ wp-cli.local.yml
 
 # Node
 node_modules
-npm-debug.log
-yarn-error.log
-
-# VS Code
-.vscode/settings.json
-
-# Bud
-storage/bud/*
