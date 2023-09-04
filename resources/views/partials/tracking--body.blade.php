@@ -1,2 +1,0 @@
-{!! $App::googleTagManagerBody() !!}
-{!! $App::facebookPixelBody() !!}
