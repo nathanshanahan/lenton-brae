@@ -2,11 +2,14 @@
 web/app/plugins/*
 !web/app/plugins/.gitkeep
 web/app/mu-plugins/*/
-web/app/themes/twentytwentythree/
+web/app/themes/twentytwenty*/
 web/app/upgrade
 web/app/uploads/*
 !web/app/uploads/.gitkeep
 web/app/cache/*
+
+# built files
+web/app/themes/**/dist
 
 # WordPress
 web/wp
@@ -28,3 +31,15 @@ wp-cli.local.yml
 
 # Node
 node_modules
+
+# PHP storm
+.idea/*
+
+# Local
+sql/*
+
+# Node
+node_modules
+
+# Notes
+/devnotes/*.local.*
