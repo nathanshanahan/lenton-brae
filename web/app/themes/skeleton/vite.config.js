@@ -6,23 +6,22 @@ import { rm, mkdir, writeFile } from 'node:fs/promises'
 // import { CopyFilePlugin } from './plugins';
 
 const __dirname = new URL('.', import.meta.url).pathname;
-const getEntries = (entries) => { const out = {}; entries.forEach(entry => { out[entry.name] = entry.source; }); return out; };
-// const getEntries = (entries) => entries.map(entry => entry.source);
+const srcDir = './src';
+const distDir = './dist';
+const assetsDir = 'assets';
 
 const entries = [
-	{ name: 'main', source: './src/js/main.js', },
-	{ name: 'admin', source: './src/js/admin.js', },
-	{ name: 'main-css', source: './src/scss/main-css.js', },
-	{ name: 'admin-css', source: './src/scss/admin-css.js', },
+	{ name: 'main', source: `${srcDir}/js/main.js`},
+	{ name: 'admin', source: `${srcDir}/js/admin.js`},
+	{ name: 'main-css', source: `${srcDir}/scss/main-css.js`},
+	{ name: 'admin-css', source: `${srcDir}/scss/admin-css.js`},
 ];
 
-
-
-// const distDir = resolve(__dirname, 'dist');
-const distDir = './dist';
-// const distDir = '../dist';
-const assetsDir = 'assets';
-console.log(__dirname)
+function formatEntriesForRollup(entries) {
+	const out = {};
+	entries.forEach(entry => { out[entry.name] = entry.source; });
+	return out;
+};
 
 export default defineConfig({
 	plugins: [
@@ -195,7 +194,7 @@ export default defineConfig({
 		outDir: 'dist',
 		// outDir: '../dist',
 		assetsDir: assetsDir,
-		rollupOptions: { input: getEntries(entries) },
+		rollupOptions: { input: formatEntriesForRollup(entries) },
 		// manifest: true,
 	},
 	server: {
@@ -203,7 +202,7 @@ export default defineConfig({
 		host: '0.0.0.0',
 	},
 	// root: './src/',
-	publicDir: './src/public',
+	publicDir: `${srcDir}/public`,
 });
 
 /**
