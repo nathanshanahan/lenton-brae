@@ -15,3 +15,5 @@ use Roots\WPConfig\Config;
  */
 
 Config::define('DISALLOW_INDEXING', true);
+
+Config::define('DEV_URL', env('DEV_URL') ?? '');

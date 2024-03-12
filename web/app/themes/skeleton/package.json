@@ -1,0 +1,24 @@
+{
+	"name": "skeleton",
+	"version": "1.0.0",
+	"main": "app.js",
+	"license": "MIT",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@swup/body-class-plugin": "^3.1.1",
+		"@swup/scroll-plugin": "^3.3.0",
+		"lazysizes": "^5.3.2",
+		"motion": "^10.16.4",
+		"swiper": "^11.0.3",
+		"swup": "^4.3.4",
+		"vanilla-marquee": "^1.1.2",
+		"vite": "^4.4.9"
+	},
+	"devDependencies": {
+		"sass": "^1.66.1"
+	}
+}
