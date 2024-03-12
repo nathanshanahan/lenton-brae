@@ -68,5 +68,8 @@
     "test": [
       "phpcs"
     ]
+  },
+  "autoload": {
+	  "psr-4": {"App\\": "web/app/themes/skeleton/App/"}
   }
 }

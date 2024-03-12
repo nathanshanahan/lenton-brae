@@ -2,7 +2,7 @@
 
 namespace App\Bone;
 
-include_once dirname(__FILE__) . "/Manifest.php";
+use \App\Bone\Manifest;
 
 class ViteAssets
 {

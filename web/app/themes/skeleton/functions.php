@@ -2,9 +2,10 @@
 
 namespace App;
 
-include_once dirname(__FILE__) . "/App/Bone/ViteAssets.php";
+use \App\Bone\ViteAssets;
 
-$assets = new \App\Bone\ViteAssets();
+$assets = new ViteAssets();
+
 
 function enqueue_scripts_styles() {
 
