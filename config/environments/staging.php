@@ -17,3 +17,6 @@ use Roots\WPConfig\Config;
 Config::define('DISALLOW_INDEXING', true);
 
 Config::define('DEV_URL', env('DEV_URL') ?? '');
+
+// disable Wordfence
+Config::define('WFWAF_ENABLED', env('WFWAF_ENABLED') ?? false);

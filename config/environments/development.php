@@ -20,3 +20,9 @@ ini_set('display_errors', '1');
 
 // Enable plugin and theme updates and installation from the admin
 Config::define('DISALLOW_FILE_MODS', false);
+
+// disable Wordfence
+Config::define('WFWAF_ENABLED', env('WFWAF_ENABLED') ?? false);
+
+// set flag to disable Mailgun
+Config::define('BONE_DISABLE_MAILGUN', env('BONE_DISABLE_MAILGUN') ?? true);
