@@ -23,37 +23,45 @@ class ThemeSetup {
 		$this->setupThemeClasses(); // should this be in after_setup_theme?
 
 		add_action( 'init', self::class . '::registerPostTypes' );
+
+		/**
+		 * Nav - clean up classes and IDs
+		 */
+		add_filter('nav_menu_css_class', [$this, 'navClassFilter'], 100, 1);
+		add_filter('nav_menu_item_id', [$this, 'navIdFilter'], 100, 2);
 	}
 
-	public static function setupThemeClasses() {
+	public static function setupThemeClasses() : void {
+		new \App\Bone\Security();
+		new \App\Bone\Maintenance();
+		new \App\Bone\JWTHelper();
+		new \App\Bone\Instagram();
+		new \App\Bone\Headless();
+		new \App\Bone\Emails();
+		new \App\Bone\CookieNotice();
+		new \App\Bone\WP_Cleanup();
+
 		new \App\ACF();
 		new \App\SiteOptions();
-		// new \App\Bone\Theme\MigratedThemeFeatures();
-		// new \App\Bone\Theme\Security();
-		// new \App\Bone\Theme\Maintenance();
-		// new \App\Bone\Theme\JWTHelper();
-		// new \App\Bone\Theme\Instagram();
-		// new \App\Bone\Theme\Headless();
-		// new \App\Bone\Theme\Emails();
-		// new \App\Bone\Theme\CookieNotice();
-		// new \App\MFW\TinyMCE();
+		new \App\TinyMCE();
 	}
 
-	public static function registerPostTypes() {
-		// \App\MFW\Events::setup();
-		// \App\MFW\CommercialPartners::setup();
-		// \App\MFW\Campaigns::setup();
-		// \App\MFW\FestivalArchives::setup();
-
+	public static function registerPostTypes() : void {
+		/**
+		 * Add post type registrations here. E.g.:
+		 *
+		 * \App\PostTypes\Events::setup();
+		 */
+		\App\PostTypes\Posts::setup();
 		self::addPageSupports();
 	}
 
-	private static function addPageSupports() {
+	private static function addPageSupports() : void {
 		add_post_type_support('page', 'excerpt');
 		register_taxonomy_for_object_type( 'post_tag', 'page' );
 	}
 
-	public static function addThemeSupports() {
+	public static function addThemeSupports() : void {
 		add_theme_support('title-tag');
 		add_theme_support('post-thumbnails');
 		add_theme_support('responsive-embeds');
@@ -68,14 +76,45 @@ class ThemeSetup {
 		]);
 	}
 
-	public static function removeThemeSupports() {
+	public static function removeThemeSupports() : void {
 		remove_theme_support('block-templates');
 		remove_theme_support('core-block-patterns');
 	}
 
-	public static function registerMenus() {
+	public static function registerMenus() : void {
 		register_nav_menus([
 			'primary_navigation' => __('Primary Navigation'),
 		]);
+	}
+
+	/**
+	 * Cleans the class, keeping current-menu-item only
+	 *
+	 * @param $var
+	 * @return array|string
+	 */
+	public function navClassFilter(
+		array $classes,
+		WP_Post $menu_item,
+		stdClass $args,
+		int $depth
+	) : array {
+		$allow_list = [
+			'current-menu-item',
+			'menu-item-has-children',
+		];
+		return is_array($classes) ? array_intersect($var, $allow_list) : '';
+	}
+
+	/**
+	 * Cleans the id of the menu back to the title
+	 */
+	public function navIdFilter(
+		string $id,
+		WP_Post $item,
+		stdClass $args,
+		int $depth
+	) : string {
+		return 'nav-' . $item->slug;
 	}
 }
