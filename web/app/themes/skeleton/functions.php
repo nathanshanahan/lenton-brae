@@ -2,9 +2,13 @@
 
 namespace App;
 
-use \App\Bone\ViteAssets;
-
-$assets = new ViteAssets();
+/**
+ * MAIN THEME SETUP
+ *
+ * If you're trying to find where some theme functionality is being added / run,
+ * start by looking here.
+ */
+new \App\ThemeSetup();
 
 
 function enqueue_scripts_styles() {

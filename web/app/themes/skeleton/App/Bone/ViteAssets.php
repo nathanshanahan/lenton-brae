@@ -8,10 +8,12 @@ class ViteAssets
 {
 	private Manifest $vm;
 	const VITE_HMR_CLIENT_HANDLE = 'vite-client';
-	const SERVER_HOST = DEV_URL ?? '';
+	public static $server_host = '';
 
 	public function __construct(string $basePath = "", string $manifestFile = "", string $algorithm = "sha256")
 	{
+		self::$server_host = self::serverHost();
+
 		// assume defaults
 		if (!$basePath) {
 			$basePath = get_stylesheet_directory_uri();
@@ -26,7 +28,7 @@ class ViteAssets
 		$this->vm = new \App\Bone\Manifest($manifestFile, $basePath, $algorithm);
 
 		// if dev server is set and available to this server, enqueue the vite client script
-		if (self::SERVER_HOST) {
+		if (self::$server_host) {
 			if (self::isViteAvailableFromWP()) {
 				add_action('wp_enqueue_scripts', [$this, 'enqueueClientScript']);
 			}
@@ -43,7 +45,7 @@ class ViteAssets
 	}
 
 	public static function serverHost(): string {
-		return DEV_URL ?? '';
+		return defined('DEV_URL') ? DEV_URL : '';
 	}
 
 	public static function isViteAvailableFromWP(): bool {
@@ -84,10 +86,10 @@ class ViteAssets
 		$entry['source'] = $computed['source'];
 
 		if (str_ends_with($computed['url'], '.css')) {
-			$entry['hmr'] = self::SERVER_HOST . '/src/scss/' . $entry['source'];
+			$entry['hmr'] = self::$server_host . '/src/scss/' . $entry['source'];
 		}
 		else if (str_ends_with($computed['url'], '.js')) {
-			$entry['hmr'] = self::SERVER_HOST . '/src/js/' . $entry['source'];
+			$entry['hmr'] = self::$server_host . '/src/js/' . $entry['source'];
 		}
 		else {
 			$entry['hmr'] = $computed['url'];

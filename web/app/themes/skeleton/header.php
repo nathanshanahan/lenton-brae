@@ -6,6 +6,9 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
+	<?php get_template_part('partials/tracking-head'); ?>
 </head>
 
 <body <?php body_class(); ?>>
+
+	<?php get_template_part('partials/tracking-body'); ?>
