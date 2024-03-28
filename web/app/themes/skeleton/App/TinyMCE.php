@@ -43,8 +43,6 @@ class TinyMCE
 			add_filter( 'tiny_mce_before_init', [self::class, 'customise_mce_set_textcolors'] );
 			add_filter( 'tiny_mce_before_init', [self::class, 'customise_mce_block_formats'] );
 
-
-
 			/**
 			 * register additional stylesheets and fonts to the editor
 			 */
@@ -53,13 +51,9 @@ class TinyMCE
 	}
 
 	public static function mce_add_styles( $settings ) {
+		global $assets;
 
-		$indexCSS = 'style.css';
-		$stylesheet_uri = get_stylesheet_directory_uri() . $GLOBALS['manifest']->$indexCSS;
-		if (isViteHMRAvailable()) {
-			$stylesheet_uri = getViteDevServerAddress() . '/src/scss/style.scss';
-		}
-
+		$stylesheet_uri =  $assets->uri('main-css');
 
 		$additions = [
 			// ...stylesheets and fonts

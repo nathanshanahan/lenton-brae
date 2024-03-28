@@ -29,8 +29,9 @@ class ViteAssets
 
 		// if dev server is set and available to this server, enqueue the vite client script
 		if (self::$server_host) {
+			$hook = is_admin() ? 'admin_enqueue_scripts' : 'wp_enqueue_scripts';
 			if (self::isViteAvailableFromWP()) {
-				add_action('wp_enqueue_scripts', [$this, 'enqueueClientScript']);
+				add_action($hook, [$this, 'enqueueClientScript']);
 			}
 			else if (self::isNonLocalServer()) {
 				// TODO: enqueue custom script to check for the dev server on the frontend
