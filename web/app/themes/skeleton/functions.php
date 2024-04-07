@@ -2,6 +2,9 @@
 
 namespace App;
 
+include_once 'includes/helpers.php';
+include_once 'includes/template-functions.php';
+
 /**
  * MAIN THEME SETUP
  *
