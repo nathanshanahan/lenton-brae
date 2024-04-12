@@ -1,0 +1,11 @@
+.swup-page-loader
+{
+	opacity: 1;
+	transition: opacity 240ms linear 96ms;
+
+	html.is-animating &
+	{
+		opacity: 0;
+		transition: opacity 240ms linear;
+	}
+}

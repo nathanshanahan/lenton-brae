@@ -7,9 +7,9 @@ $atts['class'] = prepend_class("module $block", $atts['class'] ?? '');
 $content = $args['content'];
 ?>
 
-<div <?= atts_to_str($atts) ?>>
+<div <?= atts_to_str($atts) ?> data-reveal="up">
 	<?php if (!empty($content)) : ?>
-		<?php get_template_part('partials/user-html', '', [
+		<?php partial('partials/user-html', '', [
 			'content' => $content,
 			'class' => "{$block}__content"
 		]) ?>

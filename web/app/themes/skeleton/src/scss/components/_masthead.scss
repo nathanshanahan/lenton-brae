@@ -1,0 +1,15 @@
+.masthead {
+
+	&--sticky {
+		position: sticky;
+		top: var(--wp-admin--admin-bar--height, 0px);
+		background: white;
+	}
+
+	&__layout {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+		align-items: center;
+	}
+}

@@ -1,0 +1,33 @@
+html {
+	height: 100%;
+
+	--ease: #{$ease};
+}
+
+body {
+	background-color: swatch('white');
+	color: swatch('black');
+	-webkit-font-smoothing: antialiased;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+
+	&#tinymce {
+		padding: 6px; // padding inside TinyMCE editors
+	}
+}
+
+// Breakpoint helpers
+@each $bp, $query in $breakpoints {
+	.hide-below-#{$bp} {
+		@include screenDown($bp) {
+			display: none !important;
+		}
+	}
+
+	.hide-above-#{$bp} {
+		@include screenUp($bp) {
+			display: none !important;
+		}
+	}
+}

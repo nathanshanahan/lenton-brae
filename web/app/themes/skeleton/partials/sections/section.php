@@ -9,6 +9,6 @@ $modules = $args['modules'] ?? [];
 
 <div <?= atts_to_str($computed) ?>>
 	<?php if (!empty($modules)) : ?>
-		<?php get_template_part('partials/page-builder', null, ['modules' => $modules]); ?>
+		<?php partial('partials/page-builder', null, ['modules' => $modules]); ?>
 	<?php endif ?>
 </div>

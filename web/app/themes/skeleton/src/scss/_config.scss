@@ -1,0 +1,54 @@
+@use "sass:map";
+
+/**
+ * Typography
+ */
+$base-font-size: 16px;
+
+
+/**
+ * Breakpoints
+ */
+$breakpoints: (
+	'small': 320px,
+	'mobile-small': 460px,
+	'mobile': 600px,
+	'tablet-portrait': 900px,
+	'tablet-landscape': 1200px,
+	'laptop': 1536px,
+	'desktop': 2000px,
+	'desktop-extended': 2500px,
+	'content': 1480px,
+);
+
+/**
+ * Colors
+ */
+$palette: (
+	'white': #FFFFFF,
+	'black': #000000,
+	'campari': #FF3C27,
+	'green': #4FF814,
+	'grey': #949494,
+	'light-grey': #F0F0F0,
+	'mid-grey': #E9E9E9,
+	'mid-grey-highlight': #E0E0E0,
+);
+
+/**
+ * Z-indexes
+ */
+$z: (
+	'default': 1,
+	'nav': 100,
+	'modal': 300,
+	'max': 1000,
+);
+
+/**
+ * Styles
+ */
+
+$maxContentWidth: 1260px;
+$ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+

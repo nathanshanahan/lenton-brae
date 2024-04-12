@@ -27,8 +27,8 @@ class ThemeSetup {
 		/**
 		 * Nav - clean up classes and IDs
 		 */
-		add_filter('nav_menu_css_class', [$this, 'navClassFilter'], 100, 1);
-		add_filter('nav_menu_item_id', [$this, 'navIdFilter'], 100, 2);
+		add_filter('nav_menu_css_class', [$this, 'navClassFilter'], 100, 4);
+		add_filter('nav_menu_item_id', [$this, 'navIdFilter'], 100, 4);
 	}
 
 	public static function setupThemeClasses() : void {
@@ -95,15 +95,15 @@ class ThemeSetup {
 	 */
 	public function navClassFilter(
 		array $classes,
-		WP_Post $menu_item,
-		stdClass $args,
+		\WP_Post $menu_item,
+		\stdClass $args,
 		int $depth
 	) : array {
 		$allow_list = [
 			'current-menu-item',
 			'menu-item-has-children',
 		];
-		return is_array($classes) ? array_intersect($var, $allow_list) : '';
+		return is_array($classes) ? array_intersect($classes, $allow_list) : '';
 	}
 
 	/**
@@ -111,10 +111,12 @@ class ThemeSetup {
 	 */
 	public function navIdFilter(
 		string $id,
-		WP_Post $item,
-		stdClass $args,
+		\WP_Post $item,
+		\stdClass $args,
 		int $depth
 	) : string {
-		return 'nav-' . $item->slug;
+		$base = $args->menu_id ?? 'menu';
+
+		return "{$base}-{$item->post_name}";
 	}
 }

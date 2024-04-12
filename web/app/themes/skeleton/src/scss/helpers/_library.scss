@@ -1,0 +1,362 @@
+@use "sass:math";
+@use "sass:map";
+@use "sass:list";
+@use "utils";
+@use "../config";
+
+/**
+*  Library
+*
+*  Contains mixins and functions.
+*/
+
+/**
+ * rem - Converts pixel value to rem value based on the base font size.
+ *
+ * @param {Number} $px_size - Pixel size to be converted.
+ * @return {Number} - Equivalent rem value.
+ * @usage example - font-size: rem(16);
+*/
+
+@function rem($px_size) {
+	@return math.div(utils.stripUnits($px_size), utils.stripUnits(config.$base-font-size)) * 1rem;
+}
+
+/**
+*  Layout
+*/
+// Margins and positioning helper function
+@function spacer($val: 1) {
+	@return $spacer * $val + 0;
+}
+
+@function swatch($request) {
+	@return map.get(config.$palette, $request);
+}
+
+// Same thing for theme metadata
+@function metadata($request) {
+	@return map.get($_metadata, $request);
+}
+
+@function z($level, $adjust: 0) {
+	$z: map.get(config.$z, $level);
+	@if $adjust != 0 {
+		$z: $z + $adjust;
+	}
+	@return $z;
+}
+
+/**
+* Custom Mixins
+**/
+@mixin transition($type, $duration) {
+	-webkit-transition: #{$type} #{$duration} cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	-moz-transition: #{$type} #{$duration} cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	-o-transition: #{$type} #{$duration} cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	transition: #{$type} #{$duration} cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/**
+ *  Center element
+ *  parent element must have position: relative;
+ *
+ *  @variables: xy, x, y
+ *  Default: xy
+ */
+@mixin center($xy: xy) {
+	position: absolute;
+
+	@if $xy == xy {
+		left: 50%;
+		top: 50%;
+		bottom: auto;
+		right: auto;
+		transform: translate(-50%, -50%);
+	}
+
+	@else if $xy == x {
+		left: 50%;
+		right: auto;
+		transform: translateX(-50%);
+	}
+
+	@else if $xy == y {
+		top: 50%;
+		bottom: auto;
+		transform: translateY(-50%);
+	}
+}
+
+// For perfect image ratios
+@mixin imageRatio($height, $width) {
+	content: '';
+	position: relative;
+	display: block;
+	height: 0;
+	width: 100%;
+	padding-top: calc((#{$height} / #{$width}) * 100%);
+}
+
+/**
+ *  Font size map by Jonathan Suh
+ *  https://www.smashingmagazine.com/2015/06/responsive-typography-with-sass-maps/
+ */
+
+// Utility function for mixin font-size
+@mixin makeFontSize($fs-font-size) {
+
+	// If $fs-font-size is a list, include both font-size and line-height
+	@if type-of($fs-font-size) =='list' {
+		font-size: list.nth($fs-font-size, 1);
+
+		@if (length($fs-font-size) > 1) {
+			line-height: list.nth($fs-font-size, 2);
+		}
+	}
+
+	@else {
+		font-size: $fs-font-size;
+	}
+}
+
+/** Usage example
+	.font-style-body {
+		@include font-size((
+			null: 14px, // default font size for all breakpoints
+			'mobile': (16px, 1.2), // specific font size and line-height for mobile breakpoint
+			'tablet-landscape': (20px, 1.5), // specific font size and line-height for tablet landscape breakpoint
+			'desktop': 24px // specific font size for desktop breakpoint
+		));
+	}
+**/
+
+@mixin fontSize($fs-map, $fs-breakpoints: config.$breakpoints) {
+
+	@each $fs-breakpoint,
+	$fs-font-size in $fs-map {
+		@if not $fs-breakpoint {
+			@include makeFontSize($fs-font-size);
+		}
+
+		@else {
+
+			// If $fs-font-size is a key that exists in $fs-breakpoints, use the value
+			@if map-has-key($fs-breakpoints, $fs-breakpoint) {
+				$fs-breakpoint-value: map.get($fs-breakpoints, $fs-breakpoint);
+
+				@media screen and (min-width: $fs-breakpoint-value) {
+					@include makeFontSize($fs-font-size);
+				}
+			}
+		}
+	}
+}
+
+/**
+*  Breakpoints and Media queries
+*/
+
+// retrieve a breakpoint from a map
+@function bp($breakpoint, $map) {
+	@if (type-of($map) !='map') {
+		@return null;
+	}
+
+	@else if map-has-key($map, $breakpoint) {
+		@return map-get($map, $breakpoint);
+	}
+
+	@else {
+		@error "breakpoint " + $breakpoint " doesn't exist for map " + $map;
+	}
+}
+
+// Apply min-width @media query for a given breakpoint
+// usage: @include screenUp('tablet-landscape')
+@mixin screenUp($breakpoint, $map: config.$breakpoints) {
+	@media screen and (min-width: bp($breakpoint, $map)) {
+		@content;
+	}
+}
+
+// Apply max-width @media query for a given breakpoint
+@mixin screenDown($breakpoint, $map: config.$breakpoints) {
+	@media screen and (max-width: #{bp($breakpoint, $map) - 0.02}) {
+		@content;
+	}
+}
+
+// usage: @include screenUp('tablet-portrait', 'laptop')
+@mixin screenBetween($min, $max, $map: config.$breakpoints) {
+	@media screen and (min-width: bp($min, $map)) and (max-width: #{bp($max, $map) - 0.02}) {
+		@content;
+	}
+}
+
+@mixin screenLandscape() {
+	@media screen and (min-aspect-ratio: 1/1) {
+		@content;
+	}
+}
+
+@mixin screenPortrait() {
+	@media screen and (max-aspect-ratio: 1/1) {
+		@content;
+	}
+}
+
+@mixin screenUltrawide() {
+	@media screen and (min-aspect-ratio: 18/9) {
+		@content;
+	}
+}
+
+// 550 is a guestimate
+@mixin screenLandscapePhone {
+	@media screen and (min-aspect-ratio: 1/1) and (max-height: 550px) {
+		@content;
+	}
+}
+
+/**
+* Prefers reduced motion
+*/
+
+/** Usage example, animation not play if user prefers reduced motion.
+	.my-element {
+		@include prefersReducedMotion(false) {
+			animation: my-animation 1s infinite;
+		}
+	}
+**/
+
+@mixin prefersReducedMotion($reduce: true) {
+	$test: null;
+
+	@if ($reduce == true) {
+		$test: reduce;
+	}
+
+	@else {
+		$test: no-preference;
+	}
+
+	/* stylelint-disable media-feature-name-no-unknown */
+	@media (prefers-reduced-motion: $test) {
+		@content;
+	}
+
+	/* stylelint-enable media-feature-name-no-unknown */
+}
+
+/**
+* Device Primary Hover - Applies styles based on the availability of primary hover capability on the device.
+* Device Has Hover - Applies styles based on the availability of any hover capability on the device.
+
+// Usage example
+// Border will only be shown if the primary input method for this device supports a hover state.
+	.my-element {
+		@include devicePrimaryHover(true) {
+			&:hover,
+			&:focus
+			{
+				border-bottom: 1px solid;
+			}
+		}
+	}
+*/
+
+// Accepts boolean only
+@mixin devicePrimaryHover($shouldExist: true) {
+	$test: null;
+
+	@if ($shouldExist == true) {
+		$test: hover;
+	}
+
+	@else {
+		$test: none;
+	}
+
+	@media (hover: $test) {
+		@content;
+	}
+}
+
+@mixin deviceHasHover($shouldExist: true) {
+	$test: null;
+
+	@if ($shouldExist == true) {
+		$test: hover;
+	}
+
+	@else {
+		$test: none;
+	}
+
+	@media (any-hover: $test) {
+		@content;
+	}
+}
+
+/**
+* Placeholder
+*/
+@mixin placeholder($color, $opacity) {
+	&::placeholder {
+		color: $color;
+		opacity: $opacity;
+	}
+
+	&:-ms-input-placeholder {
+		color: $color;
+		opacity: $opacity;
+	}
+
+	&::-ms-input-placeholder {
+		color: $color;
+		opacity: $opacity;
+	}
+}
+
+
+@mixin _objectSize($fit: cover, $position: center) {
+	width: 100%;
+	height: 100%;
+	object-fit: $fit;
+	object-position: $position;
+}
+
+@mixin objectCover($position: center) {
+	@include _objectSize(cover, $position);
+}
+
+@mixin objectContain($position: center) {
+	@include _objectSize(contain, $position);
+}
+
+// Fill container using absolute positioning
+@mixin absolutelyFillContainer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+@mixin removeFirstLastChildMargin {
+	>*:first-child {
+		margin-top: 0;
+	}
+
+	>*:last-child {
+		margin-bottom: 0;
+	}
+}
+
+@mixin listReset {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}

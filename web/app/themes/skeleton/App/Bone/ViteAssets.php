@@ -68,8 +68,8 @@ class ViteAssets
 	}
 
 	public static function enqueueClientScript() {
-		wp_enqueue_script(self::VITE_HMR_CLIENT_HANDLE, self::serverHost() . '/@vite/client', array(), null);
-		self::scriptAsModule(self::VITE_HMR_CLIENT_HANDLE);
+		wp_enqueue_script_module(self::VITE_HMR_CLIENT_HANDLE, self::serverHost() . '/@vite/client', [], null);
+		// self::scriptAsModule(self::VITE_HMR_CLIENT_HANDLE);
 	}
 
 	public function get(string $entrypoint): array | null {

@@ -1,0 +1,88 @@
+body
+{
+	--reveal-duration: 540ms;// 640ms;
+	--reveal-delay: 0ms;
+	--reveal-ease: var(--ease);
+}
+
+[data-reveal="defer"]
+{
+	// don't do anything - animations deferred to child elements
+}
+
+
+// Initial setup of styles. Don't touch styles for deferred animations
+[data-reveal]:not([data-reveal="defer"])
+{
+	transition: none;
+	transform: translate(0, 0);
+
+	&.reveal-waiting
+	{
+		opacity: 0;
+	}
+
+	&.revealed
+	{
+		transition:
+			opacity var(--reveal-duration) var(--ease) var(--reveal-delay),
+			filter var(--reveal-duration) var(--ease) var(--reveal-delay),
+			transform var(--reveal-duration) var(--ease) var(--reveal-delay);
+	}
+}
+
+// setup transform reveals
+.reveal-waiting
+{
+	$reveal_amount: 1rem;
+
+	&[data-reveal="up"]
+	{
+		transform: translate(0, #{$reveal_amount});
+	}
+
+	&[data-reveal="down"]
+	{
+		transform: translate(0, -#{$reveal_amount});
+	}
+
+	&[data-reveal="left"]
+	{
+		transform: translate(#{$reveal_amount}, 0);
+	}
+
+	&[data-reveal="right"]
+	{
+		transform: translate(-#{$reveal_amount}, 0);
+	}
+}
+
+// delays
+.revealed
+{
+	&[data-reveal-delay="short"]
+	{
+		--reveal-delay: 100ms;
+	}
+
+	&[data-reveal-delay="medium"]
+	{
+		--reveal-delay: 200ms;
+	}
+
+	&[data-reveal-delay="long"]
+	{
+		--reveal-delay: 400ms;
+	}
+
+	// create stagger effects on lists using their indexes to set the delay
+	@for $i from 1 through 20
+	{
+		$stagger: $i * 100ms;
+
+		&[data-reveal-delay="#{$i}"]
+		{
+			--reveal-delay: calc(100ms + #{$stagger});
+		}
+	}
+}

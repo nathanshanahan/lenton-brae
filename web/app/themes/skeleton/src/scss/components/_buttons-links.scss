@@ -1,0 +1,48 @@
+@mixin linkReset {
+	text-decoration: none;
+	color: inherit;
+}
+
+@mixin cleanLinkWithHover {
+	@include linkReset;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.clean-link {
+	@include linkReset;
+}
+
+.clean-link-hover {
+	@include cleanLinkWithHover;
+}
+
+@mixin buttonReset {
+	text-decoration: none;
+	background: none;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	appearance: none;
+	padding: 0;
+	cursor: pointer;
+	color: inherit;
+}
+
+@mixin buttonBase {
+	@include buttonReset;
+
+	&[disabled] {
+		cursor: not-allowed;
+	}
+}
+
+.btn {
+	@include buttonReset;
+}
+
+a {
+	color: inherit;
+}

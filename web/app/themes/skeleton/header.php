@@ -6,9 +6,12 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
-	<?php get_template_part('partials/tracking-head'); ?>
+	<?php partial('partials/tracking-head'); ?>
 </head>
 
 <body <?php body_class(); ?>>
+	<?php partial('partials/svg-symbols'); ?>
 
-	<?php get_template_part('partials/tracking-body'); ?>
+	<?php partial('partials/tracking-body'); ?>
+
+	<?php partial('partials/masthead'); ?>

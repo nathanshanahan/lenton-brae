@@ -1,0 +1,60 @@
+* {
+	box-sizing: border-box;
+}
+
+*::before,
+*::after
+{
+	box-sizing: inherit;
+}
+
+html,
+body
+{
+	padding: 0;
+	margin: 0;
+}
+
+main,
+article,
+aside,
+figure,
+footer,
+header,
+nav,
+section,
+details,
+summary
+{
+	display: block;
+}
+
+button,
+input,
+select,
+textarea
+{
+	font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+{
+	margin-top: unset;
+	margin-bottom: unset;
+}
+
+a
+{
+	color: inherit;
+}
+
+em,
+strong
+{
+	word-wrap: break-word;
+}

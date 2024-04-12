@@ -18,7 +18,7 @@ function enqueue_scripts_styles() {
 
 	global $assets;
 
-	wp_enqueue_script('app-main', $assets->uri('main'), [], null);
+	wp_enqueue_script_module('app-main', $assets->uri('main'), [], null);
 	wp_enqueue_style('app-main-css', $assets->uri('main-css'), [], null);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__.'\\enqueue_scripts_styles', 20);

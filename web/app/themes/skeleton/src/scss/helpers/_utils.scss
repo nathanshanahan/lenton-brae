@@ -1,0 +1,14 @@
+@use "sass:math";
+
+/* stylelint-disable */
+
+@function stripUnits($number) {
+	@return math.div($number, ($number * 0 + 1));
+}
+
+// Master config function
+@function config($map, $key) {
+	@return map-get($map, $key);
+}
+
+/* stylelint-enable */

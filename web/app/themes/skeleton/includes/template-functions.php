@@ -1,5 +1,20 @@
 <?php
 
+/**
+ * This is a wrapper around get_template_part() that allows you to filter the arguments passed to the template.
+ */
+function partial(string $slug, string|null $name = null, array $args = []) {
+
+	$filter_name = 'args:' . $slug;
+	if ($name) {
+		$filter_name .= '-' . $name;
+	}
+
+	$args = apply_filters($filter_name, $args, $slug, $name);
+
+	get_template_part($slug, $name, $args);
+}
+
 /*
  * @param $id === integer|mixed. Attachment ID, object, or array
  * @param $size === string. Should be a valid image size
