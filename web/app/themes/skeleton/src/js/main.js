@@ -7,6 +7,7 @@ import SwupBodyClassPlugin from '@swup/body-class-plugin';
 import SwupScrollPlugin from '@swup/scroll-plugin';
 import GlobalMeasurements from './modules/global-measurements';
 import { watchForReveals } from './modules/reveals';
+import { rerunGravityFormsScripts } from './modules/gravity-forms';
 
 const options = {
 	linkSelector: `a[href^="${window.location.origin}"]:not([data-no-swup]):not([target="_blank"]), a[href^="/"]:not([data-no-swup]):not([target="_blank"]), a[href^="#"]:not([data-no-swup]):not([target="_blank"])`,
@@ -33,5 +34,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
 swup.hooks.on('content:replace', () => {
 	watchForReveals();
-	// rerun_gravity_forms_scripts();
+	rerunGravityFormsScripts();
 });
