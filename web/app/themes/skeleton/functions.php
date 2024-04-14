@@ -4,6 +4,7 @@ namespace App;
 
 include_once 'includes/helpers.php';
 include_once 'includes/template-functions.php';
+include_once 'includes/gravity-forms.php';
 
 /**
  * MAIN THEME SETUP

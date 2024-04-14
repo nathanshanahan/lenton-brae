@@ -26,8 +26,7 @@ add_action('wp_head', function() {
 /**
  * Disables GravityForms Styling
  */
-add_filter( 'gform_disable_form_legacy_css', '__return_true' );
-add_filter( 'gform_disable_form_theme_css', '__return_true' );
+add_filter( 'gform_disable_css', '__return_true' ); // disables _all_ frontend css, added GF 2.8,
 add_filter( 'gform_init_scripts_footer', '__return_true' );
 
 /**
@@ -55,8 +54,39 @@ add_filter( 'gform_force_hooks_js_output', '__return_true' );
 
 
 
+/**
+ * Removes the <style> tag on each form when a theme is selected. Usually filled with
+ * css variables that we aren't using.
+ */
+function gform_remove_inline_style($form_string, $form) {
+	$open_tag = '<style>';
+	$close_tag = '</style>';
+	$start = strpos($form_string, $open_tag);
+	if (!$start) {
+		return $form_string;
+	}
+
+	// find end, starting from the end of the open_tag
+	$end = strpos($form_string, $close_tag, $start + strlen($open_tag));
+	if (!$end) {
+		return $form_string;
+	}
+	// account for the length of the closing tag
+	$end = $end + strlen($close_tag);
+
+	$form_string = substr_replace($form_string, '', $start, $end - $start);
+
+	return $form_string;
+}
+add_filter( 'gform_get_form_filter', __NAMESPACE__.'\\gform_remove_inline_style', 10, 2 );
+
+
 
 /**
+ * IMPORTANT!: this is currently breaking conditional fields and possibly other things, as
+ * there are also inline scripts that get generated with ID's hardcoded in them.
+ * --
+ *
  * Gives each Gravity Form a unique ID to allow multiple instances of the same form on a page.
  *
  * Implementation taken from the multiple-gf-form-on-single-page plugin which is no longer
@@ -139,4 +169,4 @@ function gform_unique_instance_form_ids( $form_string, $form ) {
 
 	return $form_string;
 }
-add_filter( 'gform_get_form_filter', __NAMESPACE__.'\\gform_unique_instance_form_ids', 10, 2 );
+// add_filter( 'gform_get_form_filter', __NAMESPACE__.'\\gform_unique_instance_form_ids', 9999, 2 );

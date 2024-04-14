@@ -33,6 +33,19 @@ export function rerunGravityFormsScripts()
 	}, 250);
 
 	for (const form of forms) {
+		/**
+		 * un-hide form if hidden with inlined styles. AFAICT GF sets it hidden in PHP and
+		 * client-side JS reveals the form when it's available.
+		 *
+		 * Main reason for this seems to be that the form JS can't fully initialise - this
+		 * seems to primarily be due to issues with conditional fields logic not working,
+		 * probably due to some inline JS not being re-run.
+		 */
+		if (form.getAttribute('style')?.includes('display:none')) {
+			// remove inline display value (fall back to CSS)
+			form.style.display = null;
+		}
+
 		let scripts = form.parentElement?.querySelectorAll('script');
 		if (!scripts.length) continue;
 

@@ -1,0 +1,209 @@
+/*
+
+Provides core styling for things like column layouts and basic spacing. Use this if you
+are NOT using the Gravity Forms 'Orbital' theme and are styling from scratch. Update as
+needed.
+
+*/
+
+
+
+.gform_wrapper {
+	--gf-local-appearance: var(--gf-ctrl-appearance);
+    --gf-local-bg-color: var(--gf-ctrl-bg-color);
+    --gf-local-height: var(--gf-ctrl-size);
+    --gf-local-radius: var(--gf-ctrl-radius, 2px);
+    --gf-local-border-color: var(--gf-ctrl-border-color, currentColor);
+    --gf-local-border-width: var(--gf-ctrl-border-width, 1px);
+    --gf-local-border-style: var(--gf-ctrl-border-style, solid);
+    --gf-local-border-block-start: var(--gf-local-border-width) var(--gf-local-border-style) var(--gf-local-border-color);
+    --gf-local-border-block-end: var(--gf-local-border-width) var(--gf-local-border-style) var(--gf-local-border-color);
+    --gf-local-border-inline-start: var(--gf-local-border-width) var(--gf-local-border-style) var(--gf-local-border-color);
+    --gf-local-border-inline-end: var(--gf-local-border-width) var(--gf-local-border-style) var(--gf-local-border-color);
+    --gf-local-shadow: var(--gf-ctrl-shadow);
+    --gf-local-color: var(--gf-ctrl-color);
+    --gf-local-display: block;
+    --gf-local-font-family: var(--gf-ctrl-font-family);
+    --gf-local-font-size: var(--gf-ctrl-font-size);
+    --gf-local-font-style: var(--gf-ctrl-font-style);
+    --gf-local-font-weight: var(--gf-ctrl-font-weight);
+    --gf-local-letter-spacing: var(--gf-ctrl-letter-spacing);
+    --gf-local-line-height: var(--gf-ctrl-line-height);
+    --gf-local-min-height: auto;
+    --gf-local-outline: var(--gf-ctrl-outline);
+    --gf-local-outline-offset: var(--gf-ctrl-outline-offset);
+    --gf-local-padding-x: var(--gf-ctrl-padding-x, 0.5rem);
+    --gf-local-padding-y: var(--gf-ctrl-padding-y, 0.5rem);
+    --gf-local-transition: var(--gf-ctrl-transition);
+    --gf-local-width: 100%;
+    --gf-local-row-gap: var(--gf-row-gap, 1rem);
+    --gf-local-column-gap: var(--gf-column-gap, 1rem);
+
+	--gf-local-label-gap: #{rem(8)};
+}
+
+.gform_fields {
+	display: grid;
+    grid-template-columns: repeat(12, 1fr);
+	gap: var(--gf-local-row-gap) var(--gf-local-column-gap);
+
+	fieldset {
+		border: none;
+		display: block;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+
+.gfield_visibility_hidden,
+.gf_invisible {
+	inset-inline-start: -9999px;
+    position: absolute;
+    visibility: hidden;
+}
+
+
+.gfield {
+	grid-column: 1 / -1;
+    min-inline-size: 0;
+
+	@include screenUp('tablet-portrait') {
+		&--width-quarter {
+			grid-column: span 3;
+		}
+
+		&--width-third {
+			grid-column: span 4;
+		}
+
+		&--width-half {
+			grid-column: span 6;
+		}
+	}
+
+	input[type] {
+		border-width: var(--gf-local-border-width);
+		border-color: var(--gf-local-border-color);
+		border-style: var(--gf-local-border-style);
+		appearance: var(--gf-local-appearance);
+		background-color: var(--gf-local-bg-color);
+		block-size: var(--gf-local-height);
+		border-block-end: var(--gf-local-border-block-end);
+		border-block-start: var(--gf-local-border-block-start);
+		border-inline-end: var(--gf-local-border-inline-end);
+		border-inline-start: var(--gf-local-border-inline-start);
+		border-radius: var(--gf-local-radius);
+		box-shadow: var(--gf-local-shadow);
+		color: var(--gf-local-color);
+		display: var(--gf-local-display);
+		font-family: var(--gf-local-font-family);
+		font-size: var(--gf-local-font-size);
+		font-style: var(--gf-local-font-style);
+		font-weight: var(--gf-local-font-weight);
+		inline-size: var(--gf-local-width);
+		letter-spacing: var(--gf-local-letter-spacing);
+		line-height: var(--gf-local-line-height);
+		margin-block: 0;
+		margin-inline: 0;
+		min-block-size: var(--gf-local-min-height);
+		outline: var(--gf-local-outline);
+		outline-offset: var(--gf-local-outline-offset);
+		padding-block: var(--gf-local-padding-y);
+		padding-inline: var(--gf-local-padding-x);
+		transition: var(--gf-local-transition);
+
+		.small {
+			inline-size: 33%;
+		}
+
+		.medium {
+			inline-size: 66%;
+		}
+
+		.large {
+			inline-size: 100%;
+		}
+	}
+
+	select {
+		border-style: var(--gf-local-border-style);
+		// appearance: var(--gf-local-appearance);
+		background-color: var(--gf-local-bg-color);
+		block-size: var(--gf-local-height);
+		border-block-end: var(--gf-local-border-block-end);
+		border-block-start: var(--gf-local-border-block-start);
+		border-inline-end: var(--gf-local-border-inline-end);
+		border-inline-start: var(--gf-local-border-inline-start);
+		border-radius: var(--gf-local-radius);
+		box-shadow: var(--gf-local-shadow);
+		color: var(--gf-local-color);
+		display: var(--gf-local-display);
+		font-family: var(--gf-local-font-family);
+		font-size: var(--gf-local-font-size);
+		font-style: var(--gf-local-font-style);
+		font-weight: var(--gf-local-font-weight);
+		inline-size: var(--gf-local-width, 100%);
+		letter-spacing: var(--gf-local-letter-spacing);
+		line-height: var(--gf-local-line-height);
+		margin-block: 0;
+		margin-inline: 0;
+		min-block-size: var(--gf-local-min-height);
+		outline: var(--gf-local-outline);
+		outline-offset: var(--gf-local-outline-offset);
+		padding-block: var(--gf-local-padding-y);
+		padding-inline: var(--gf-local-padding-x);
+		transition: var(--gf-local-transition);
+	}
+
+	textarea {
+		inline-size: 100%;
+	}
+
+	&[data-conditional-logic="hidden"] {
+		display: none;
+	}
+}
+
+.gfield_required {
+	color: red;
+}
+
+.gfield_description {
+	display: block;
+	margin-bottom: var(--gf-local-label-gap);
+}
+
+
+.gfield_label,
+.gform-field-label {
+	margin-bottom: var(--gf-local-label-gap);
+	display: inline-block;
+}
+
+
+.gform-grid-row {
+	display: flex;
+	flex-flow: row wrap;
+	gap: var(--gf-local-row-gap) var(--gf-local-column-gap);
+}
+
+.gform-grid-col {
+	flex: none;
+    inline-size: 100%;
+
+	&--size-auto {
+
+		@include screenUp('tablet-portrait') {
+			flex: 1 1 0%;
+		}
+	}
+}
+
+.ginput_complex {
+
+}
+
+.ginput_container {
+
+}
