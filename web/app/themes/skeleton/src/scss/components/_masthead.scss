@@ -1,16 +1,87 @@
-.masthead {
+:root {
+	--masthead-padding-top: 3.625rem;
+	--menu-item-gap: 1.375rem;
+	--menu-inline-padding: 1.875rem;
+	--masthead-z-index: 50;
+	--masthead-color: var(--color-black);
+}
 
-	&--sticky {
-		position: sticky;
-		top: var(--wp-admin--admin-bar--height, 0px);
-		background: white;
-		z-index: z('nav');
-	}
+body.home {
+	--_masthead-color: var(--color-white);
+}
+
+.masthead {
+	padding-top: var(--masthead-padding-top);
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: var(--masthead-z-index);
+	color: var(--_masthead-color, var(--masthead-color));
 
 	&__layout {
 		display: flex;
 		flex-flow: row nowrap;
 		justify-content: space-between;
 		align-items: center;
+	}
+
+	&__nav-lockup {
+		display: flex;
+		gap: var(--menu-inline-padding);
+		text-transform: uppercase;
+	}
+
+	&__cart-link {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 0.5ch;
+		transition: color var(--transition-timing) var(--ease);
+
+		&:hover {
+			color: var(--color-feature);
+		}
+
+	}
+
+	hr {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		border: none;
+		width: 0.03125rem;
+		background-color: currentColor;
+	}
+
+}
+
+
+
+.lenton-brae-logo {
+	fill: currentColor;
+
+	.margaret-river {
+		fill: currentColor;
+	}
+}
+
+.masthead-menu {
+	display: flex;
+	flex-direction: row;
+	gap: var(--menu-item-gap);
+
+	li {
+		@extend .type-style-small;
+	}
+
+	a {
+		@include underline-hover(var(--color-feature));
+		transition: color var(--transition-timing) var(--ease) calc(var(--transition-timing) * 0.5);
+
+		&:hover,
+		&:focus-visible,
+		&[aria-current="page"] {
+			color: var(--color-feature);
+		}
 	}
 }

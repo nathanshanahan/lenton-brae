@@ -46,3 +46,32 @@
 a {
 	color: inherit;
 }
+
+
+@mixin underline-hover($color: currentColor, $duration: var(--transition-timing), $height: 0.09375rem) {
+	position: relative;
+	display: inline-block;
+	text-decoration: none;
+
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: calc(-1 * #{$height} / 3); // Adjust the position based on height
+		width: 100%;
+		height: $height; // Adjust the thickness of the underline
+		background-color: $color;
+		transform: scaleX(0);
+		transform-origin: bottom right;
+
+		@include prefersReducedMotion(false) {
+			transition: transform $duration var(--ease);
+		}
+	}
+
+	&:hover::after,
+	&:focus-visible::after {
+		transform: scaleX(1);
+		transform-origin: bottom left;
+	}
+}

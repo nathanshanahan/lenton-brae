@@ -1,0 +1,12 @@
+.m-spacer {
+	--border-height: 0.0625rem;
+	--border-color: rgb(198, 195, 186);
+
+	&__border {
+		grid-column: 1 / -1;
+		background-color: var(--border-color);
+		height: 1px;
+		margin: 0;
+		border: none;
+	}
+}

@@ -1,0 +1,61 @@
+.m-home-about-us-hero {
+	--svg-max-width: 29.125rem;
+	--overlay-padding-block: 13.875rem;
+	--ourstory-padding-block: 10.25rem 12.5rem;
+	--ourstory-content-padding-right: 3.75rem;
+	--ourstory-content-padding-left: 5.875rem;
+	--ourstory-content-max-width: 29.125rem;
+	--ourstory-content-gap: 1.6rem;
+	--ourstory-border-width: 0.5rem;
+
+	&__overlay {
+		padding-block: var(--overlay-padding-block);
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 1) 100%);
+	}
+
+	&__hero-svg {
+		max-width: var(--svg-max-width);
+	}
+
+	&__our-story {
+		padding-block: var(--ourstory-padding-block);
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	&__content-lockup {
+		padding-left: var(--ourstory-content-padding-left);
+		padding-right: var(--ourstory-content-padding-right);
+		max-width: var(--ourstory-content-max-width);
+		display: flex;
+		flex-direction: column;
+		gap: var(--ourstory-content-gap);
+		border-left: var(--ourstory-border-width) solid var(--color-feature);
+
+	}
+
+	&__graphics-lockup {
+		margin-block: auto;
+		position: relative;
+	}
+
+	&__graphic-arch {
+		color: var(--color-feature);
+		position: absolute;
+		top: 50%;
+		right: 25%;
+		left: 6.8%;
+		transform: translateY(-50%);
+		max-width: 60%;
+		height: auto;
+	}
+
+	.user-html p:not([class]),
+	.user-html li:not([class]) {
+		font-size: var(--type-size-small);
+	}
+
+	&__buttons {
+		margin-top: auto;
+	}
+}

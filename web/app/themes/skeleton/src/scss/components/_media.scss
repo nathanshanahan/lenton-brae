@@ -1,0 +1,70 @@
+:root {
+	--media-wide-aspect-ratio: 2880/1344;
+	--media-portait-aspect-ratio: 428/490;
+	--media-landscape-aspect-ratio: 364/200;
+	--media-video-aspect-ratio: 16/9;
+	--caption-padding-inline: 0.75rem;
+}
+
+.media-container {
+	position: relative;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+
+	&--viewport-height {
+		min-height: 100dvh;
+	}
+
+	&--content-height {
+		height: 100%;
+		width: 100%;
+	}
+
+	&--natural {
+		aspect-ratio: var(--_media-aspect-ratio, var(--media-aspect-ratio));
+	}
+
+	&--wide {
+		aspect-ratio: var(--_media-wide-aspect-ratio, var(--media-wide-aspect-ratio));
+	}
+
+	&--portrait {
+		aspect-ratio: var(--_media-portait-aspect-ratio, var(--media-portait-aspect-ratio));
+	}
+
+	&--landscape {
+		aspect-ratio: var(--_media-landscape-aspect-ratio, var(--media-landscape-aspect-ratio));
+	}
+
+	&--aspect-video {
+		aspect-ratio: var(--_media-video-aspect-ratio, var(--media-video-aspect-ratio));
+	}
+
+	img,
+	video,
+	iframe {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+		object-fit: cover;
+	}
+}
+
+.media-caption {
+	p {
+		@extend .type-style-small;
+		padding-inline: var(--caption-padding-inline);
+	}
+}
+
+.overlay-lockup {
+	position: relative;
+
+	.overlay {
+		position: absolute;
+		inset: 0;
+	}
+}

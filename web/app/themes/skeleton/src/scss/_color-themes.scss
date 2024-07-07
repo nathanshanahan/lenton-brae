@@ -1,0 +1,124 @@
+:root {
+	--color-warm-black: #1A1515;
+	--color-green-black: #171616;
+	--color-black: #231F20;
+	--color-black-100: #000000;
+	--color-green-gray: #434344;
+	--color-gray: #58595B;
+
+	--color-green: #343936;
+	--color-green-light: #47574D;
+
+	--color-dark-blue: #0C1D31;
+	--color-blue: #115E73;
+
+	--color-brown: #AD663D;
+	--color-tan: #C8B3A1;
+
+	--color-feature: #A46C4D;
+
+	/* Same as --color-brown-1 */
+	--color-warm-white: #F8F2F1;
+	--color-light-gray: #E6E7E8;
+	--color-lighter-gray: #F1F2F2;
+	--color-white: #FFFFFF;
+}
+
+// Color Themes 
+[data-color-theme="white"] {
+	--_background-color: var(--color-white);
+	--_text-color: var(--color-black);
+	--_feature-color: var(--color-feature);
+}
+
+[data-color-theme="black"] {
+	--_background-color: var(--color-black-100);
+	--_text-color: var(--color-white);
+	--_feature-color: var(--color-feature);
+}
+
+[data-color-theme="textured"] {
+	--background-image: url('../images/background-texture.webp');
+	--_background-color: transparent;
+	--_text-color: var(--color-black);
+	--_feature-color: var(--color-feature);
+
+
+	background-image: var(--background-image);
+	background-repeat: repeat;
+}
+
+[data-color-theme="brown"] {
+	--_background-color: var(--color-brown);
+	--_text-color: var(--color-white);
+	--_feature-color: var(--color-white);
+}
+
+[data-color-theme="green"] {
+	--_background-color: var(--color-green-light);
+	--_text-color: var(--color-white);
+	--_feature-color: var(--color-feature);
+}
+
+[data-color-theme="blue"] {
+	--_background-color: var(--color-blue);
+	--_text-color: var(--color-white);
+	--_feature-color: var(--color-feature);
+}
+
+[data-color-theme="tan"] {
+	--_background-color: var(--color-tan);
+	--_text-color: var(--color-black);
+	--_feature-color: var(--color-feature);
+}
+
+
+// Text Color Only 
+
+
+[data-color="feature"] {
+	color: var(--_feature-color, var(--feature-color));
+}
+
+[data-color="white"] {
+	color: var(--_color-white, var(--color-white));
+}
+
+
+
+
+.module,
+[data-color-theme] {
+	background-color: var(--_background-color, var(--background-color));
+	color: var(--_text-color, var(--text-color));
+
+
+	.contrast-box {
+		background-color: var(--_contrast-background-color, var(--contrast-background-color));
+		color: var(--_contrast-text-color, var(--contrast-text-color));
+	}
+
+	.feature-contrast-box {
+		background-color: var(--color-feature);
+		color: var(--_color-feature-contrast, var(--color-feature-contrast, var(--color-op-blue-dark)));
+	}
+}
+
+/* 
+   To override CMS padding settings:
+   1. Define custom values for the corresponding CSS variables (--_padding-bottom, --_padding-top,
+      --_small-screen-padding-bottom, --_small-screen-padding-top) within the specific scope
+      where the module is used.
+   2. If no custom values are provided, the module falls back to the global values defined in
+      by the user in the CMS.
+*/
+
+.module {
+	padding-bottom: var(--_padding-bottom, var(--padding-bottom, 0));
+	padding-top: var(--_padding-top, var(--padding-top, 0));
+
+	@include screenDown('tablet-portrait') {
+		padding-bottom: var(--_small-screen-padding-bottom, var(--small-screen-padding-bottom, 0));
+		padding-top: var(--_small-screen-padding-top, var(--small-screen-padding-top, 0));
+	}
+}

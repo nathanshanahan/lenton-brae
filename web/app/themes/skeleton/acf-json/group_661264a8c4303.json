@@ -41,6 +41,37 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_6689df0af2699",
+            "label": "Colour Theme",
+            "name": "colour_theme",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "white": "White",
+                "black": "Black",
+                "tan": "Tan",
+                "green": "Green",
+                "blue": "Blue",
+                "brown": "Brown",
+                "textured": "Textured"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         }
     ],
     "location": [
@@ -61,5 +92,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1712492725
+    "modified": 1720311730
 }

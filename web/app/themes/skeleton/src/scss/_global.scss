@@ -1,7 +1,6 @@
 html {
 	height: 100%;
-
-	--ease: #{$ease};
+	scroll-behavior: smooth;
 }
 
 body {

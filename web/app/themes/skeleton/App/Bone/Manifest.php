@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Bone;
 
 /**
@@ -25,147 +26,145 @@ namespace App\Bone;
 
 class Manifest
 {
-    private array $manifest;
-    private string $baseUri;
-    private string $algorithm;
+	private array $manifest;
+	private string $baseUri;
+	private string $algorithm;
 
-    public function __construct(string $manifestFile, string $baseUri, string $algorithm = "sha256")
-    {
-        if (!file_exists(realpath($manifestFile))) {
-            throw new \Exception("Manifest file does not exist: $manifestFile");
-        }
+	public function __construct(string $manifestFile, string $baseUri, string $algorithm = "sha256")
+	{
+		if (!file_exists(realpath($manifestFile))) {
+			throw new \Exception("Manifest file does not exist: $manifestFile");
+		}
 
-        try {
-            $this->manifest = json_decode(
-                file_get_contents($manifestFile),
-                true
-            );
-        } catch (\Throwable $errorMessage) {
-            throw new \Exception("Failed loading manifest: $errorMessage");
-        }
+		try {
+			$this->manifest = json_decode(
+				file_get_contents($manifestFile),
+				true
+			);
+		} catch (\Throwable $errorMessage) {
+			throw new \Exception("Failed loading manifest: $errorMessage");
+		}
 
-        if (!parse_url($baseUri)) {
-            throw new \Exception("Failed to parse URL: $baseUri");
-        }
+		if (!parse_url($baseUri)) {
+			throw new \Exception("Failed to parse URL: $baseUri");
+		}
 
-        $this->baseUri = $baseUri;
+		$this->baseUri = $baseUri;
 
-        if (!in_array($algorithm, ["sha256", "sha384", "sha512"])) {
-            throw new \InvalidArgumentException("Unsupported hashing algorithm: $algorithm");
-        }
+		if (!in_array($algorithm, ["sha256", "sha384", "sha512"])) {
+			throw new \InvalidArgumentException("Unsupported hashing algorithm: $algorithm");
+		}
 
-        $this->algorithm = $algorithm;
-    }
+		$this->algorithm = $algorithm;
+	}
 
-    /**
-     * Returns the contents of the manifest file
-     *
-     * @return array
-     */
-    public function getManifest(): array
-    {
-        return $this->manifest;
-    }
+	/**
+	 * Returns the contents of the manifest file
+	 *
+	 * @return array
+	 */
+	public function getManifest(): array
+	{
+		return $this->manifest;
+	}
 
-    /**
-     * Returns the entrypoint from the manifest
-     *
-     * @param string $entrypoint
-     * @param bool $hash (optional)
-     * @return array
-     */
-    public function getEntrypoint(string $entrypoint, bool $hash = true): array
-    {
-        return isset($this->manifest[$entrypoint]) ? [
-            "hash" => $hash ? $this->getFileHash($this->manifest[$entrypoint]["fileName"]) : null,
-            "url"  => $this->getPath($this->manifest[$entrypoint]["fileName"]),
-            "source"  => $this->manifest[$entrypoint]["source"],
-        ] : [];
-    }
+	/**
+	 * Returns the entrypoint from the manifest
+	 *
+	 * @param string $entrypoint
+	 * @param bool $hash (optional)
+	 * @return array
+	 */
+	public function getEntrypoint(string $entrypoint, bool $hash = true): array
+	{
+		return isset($this->manifest[$entrypoint]) ? [
+			"hash" => $hash ? $this->getFileHash($this->manifest[$entrypoint]["fileName"]) : null,
+			"url"  => $this->getPath($this->manifest[$entrypoint]["fileName"]),
+			"source"  => $this->manifest[$entrypoint]["source"],
+		] : [];
+	}
 
-    /**
-     * Returns imports for a file listed in the manifest
-     *
-     * @param string $entrypoint
-     * @param bool $hash (optional)
-     * @return array
-     */
-    public function getImports(string $entrypoint, bool $hash = true): array
-    {
-        // TODO: Refactor for PHP 8.x
-        if (!isset($this->manifest[$entrypoint]) || !isset($this->manifest[$entrypoint]["imports"]) || !is_array($this->manifest[$entrypoint]["imports"]))
-        {
-            return [];
-        }
+	/**
+	 * Returns imports for a file listed in the manifest
+	 *
+	 * @param string $entrypoint
+	 * @param bool $hash (optional)
+	 * @return array
+	 */
+	public function getImports(string $entrypoint, bool $hash = true): array
+	{
+		// TODO: Refactor for PHP 8.x
+		if (!isset($this->manifest[$entrypoint]) || !isset($this->manifest[$entrypoint]["imports"]) || !is_array($this->manifest[$entrypoint]["imports"])) {
+			return [];
+		}
 
-        return array_filter(
-            array_map(function($import, $hash) {
-                return isset($this->manifest[$import]["fileName"]) ? [
-                    "hash" => $hash ? $this->getFileHash($this->manifest[$import]["fileName"]) : null,
-                    "url"  => $this->getPath($this->manifest[$import]["fileName"])
-                ] : [];
-            }, $this->manifest[$entrypoint]["imports"], [$hash])
-        );
-    }
+		return array_filter(
+			array_map(function ($import, $hash) {
+				return isset($this->manifest[$import]["fileName"]) ? [
+					"hash" => $hash ? $this->getFileHash($this->manifest[$import]["fileName"]) : null,
+					"url"  => $this->getPath($this->manifest[$import]["fileName"])
+				] : [];
+			}, $this->manifest[$entrypoint]["imports"], [$hash])
+		);
+	}
 
-    /**
-     * Returns stylesheets for a file listed in the manifest
-     *
-     * @param string $entrypoint
-     * @param bool $hash (optional)
-     * @return array
-     */
-    public function getStyles(string $entrypoint, bool $hash = true): array
-    {
-        // TODO: Refactor for PHP 8.x
-        if (!isset($this->manifest[$entrypoint]) || !isset($this->manifest[$entrypoint]["css"]) || !is_array($this->manifest[$entrypoint]["css"]))
-        {
-            return [];
-        }
+	/**
+	 * Returns stylesheets for a file listed in the manifest
+	 *
+	 * @param string $entrypoint
+	 * @param bool $hash (optional)
+	 * @return array
+	 */
+	public function getStyles(string $entrypoint, bool $hash = true): array
+	{
+		// TODO: Refactor for PHP 8.x
+		if (!isset($this->manifest[$entrypoint]) || !isset($this->manifest[$entrypoint]["css"]) || !is_array($this->manifest[$entrypoint]["css"])) {
+			return [];
+		}
 
-        return array_filter(
-            array_map(function($style, $hash) {
-                return isset($style) ? [
-                    "hash" => $hash ? $this->getFileHash($style) : null,
-                    "url"  => $this->getPath($style)
-                ] : [];
-            }, $this->manifest[$entrypoint]["css"], [$hash])
-        );
-    }
+		return array_filter(
+			array_map(function ($style, $hash) {
+				return isset($style) ? [
+					"hash" => $hash ? $this->getFileHash($style) : null,
+					"url"  => $this->getPath($style)
+				] : [];
+			}, $this->manifest[$entrypoint]["css"], [$hash])
+		);
+	}
 
-    /**
-     * Returns hash of file
-     *
-     * @param string $file
-     * @return string
-     */
-    private function getFileHash(string $file): string
-    {
-        return "{$this->algorithm}-" . base64_encode(
-            openssl_digest(
-                file_get_contents(
-                    $this->getPath($file)
-                ),
-                $this->algorithm,
-                true
-            )
-        );
-    }
+	/**
+	 * Returns hash of file
+	 *
+	 * @param string $file
+	 * @return string
+	 */
+	private function getFileHash(string $file): string
+	{
+		return "{$this->algorithm}-" . base64_encode(
+			openssl_digest(
+				file_get_contents(
+					$this->getPath($file)
+				),
+				$this->algorithm,
+				true
+			)
+		);
+	}
 
-    /**
-     * Resolves URL for a given file path
-     *
-     * @param string $relativePath
-     * @return string
-     */
-    private function getPath(string $relativePath): string
-    {
-        $baseUri = $this->baseUri;
+	/**
+	 * Resolves URL for a given file path
+	 *
+	 * @param string $relativePath
+	 * @return string
+	 */
+	private function getPath(string $relativePath): string
+	{
+		$baseUri = $this->baseUri;
 		if ($relativePath[0] === '/') {
 			$baseUri = untrailingslashit($this->baseUri);
 		}
 
 		$path = $baseUri . $relativePath;
 		return $path;
-    }
+	}
 }

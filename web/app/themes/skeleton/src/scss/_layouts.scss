@@ -1,0 +1,23 @@
+/* 
+   To override grid settings locally:
+   1. Define custom values for the corresponding CSS variables with the --_ version of the variable-name within the specific scope. EG. 
+   .module-8-column {
+        --_grid-column-count: 8;
+    }
+      
+   2. If no custom values are provided, the module falls back to the global values defined below.
+*/
+
+:root {
+
+
+	@include screenDown('laptop') {}
+
+	@include screenDown('tablet-portrait') {}
+}
+
+.content-lockup {
+	max-width: var(--_content-max-width, var(--content-max-width));
+	margin-inline: auto;
+	padding-inline: var(--_content-gutter, var(--content-gutter));
+}

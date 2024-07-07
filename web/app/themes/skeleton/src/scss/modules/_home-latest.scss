@@ -1,0 +1,146 @@
+.m-home-latest {
+
+	--module-padding-block: 12.125rem;
+	--welcome-media-lockup-grid-column: 1 / 10;
+	--welcome-content-lockup-grid-column: 10 / 15;
+	--text-content-padding-block: 5.5rem;
+	--text-content-padding-inline: 3.25rem;
+
+	--visit-lockup-grid-column: 8 / 15;
+
+	--showcase-lockup-lockup-grid-column: 1 / 8;
+
+	--text-content-gap: 1.6rem;
+
+	padding-block: var(--module-padding-block);
+
+	--swiper-theme-color: var(--color-feature);
+	--swiper-pagination-color: var(--color-feature);
+	--swiper-pagination-bottom: 16px;
+	--swiper-pagination-top: auto;
+	--swiper-pagination-bullet-border: none;
+
+	--swiper-pagination-bullet-size: 0;
+	--swiper-pagination-bullet-width: 0.5rem;
+	--swiper-pagination-bullet-height: 0.5rem;
+	--swiper-pagination-bullet-border-radius: 100%;
+	--swiper-pagination-bullet-inactive-color: transparent;
+	--swiper-pagination-bullet-inactive-opacity: 1;
+	--swiper-pagination-bullet-opacity: 1;
+	--swiper-pagination-bullet-horizontal-gap: 0.25rem;
+	--swiper-pagination-bullet-vertical-gap: 2rem;
+	--swiper-pagination-vertical-padding: 2rem;
+	--swiper-pagination-button-background: var(--color-feature);
+	--swiper-pagination-button-background-hover: var(--color-feature);
+	--swiper-pagination-button-svg-fill: var(--color-black);
+
+	&__latest-lockup {
+		display: grid;
+		grid-template-columns: repeat(13, 1fr);
+	}
+
+	&__social-media-lockup {
+		grid-column: var(--welcome-content-lockup-grid-column);
+		text-align: right;
+		position: relative;
+		color: var(--color-feature);
+
+		.social-media {
+			display: flex;
+			flex-direction: row;
+			justify-content: end;
+			gap: 0.625rem;
+			position: absolute;
+			inset: 0;
+		}
+
+		a {
+			transition: color var(--transition-timing) var(--ease);
+		}
+
+		a:hover,
+		a:focus-visible {
+			color: var(--color-black);
+		}
+	}
+
+	&__welcome-media-lockup {
+		grid-column: var(--welcome-media-lockup-grid-column);
+	}
+
+	&__welcome-content-lockup {
+		margin-top: auto;
+		padding-block: var(--text-content-padding-block);
+		padding-inline: var(--text-content-padding-inline);
+		grid-column: var(--welcome-content-lockup-grid-column);
+		display: flex;
+		flex-direction: column;
+		gap: var(--text-content-gap);
+
+	}
+
+	&__lenton-brae-lb-badge {
+		color: var(--_color-feature, var(--color-feature));
+		position: absolute;
+		left: 5.625rem;
+		top: -3rem;
+	}
+
+	&__visit-lockup {
+		grid-column: var(--visit-lockup-grid-column);
+	}
+
+	&__visit-media-lockup {}
+
+	&__visit-content-lockup {
+		display: flex;
+		flex-direction: column;
+		gap: var(--text-content-gap);
+		padding-block: var(--text-content-padding-block);
+		padding-inline: var(--text-content-padding-inline);
+	}
+
+	&__showcase-lockup {
+		grid-column: var(--showcase-lockup-lockup-grid-column);
+		grid-row: var(--showcase-lockup-lockup-grid-row);
+		margin-bottom: auto;
+	}
+
+	&__showcase-link {}
+
+	&__showcase-media-lockup {}
+
+	&__showcase-overlay {
+		writing-mode: vertical-rl;
+		/* Sets the text to run vertically from right to left */
+		text-orientation: mixed;
+		/* Allows the text to be upright */
+		transform: rotate(180deg);
+		/* Rotates the text to read from bottom to top */
+		padding: 46px 36px;
+	}
+
+	&__swiper-pagination {
+		padding-top: var(--swiper-pagination-bullet-vertical-gap);
+	}
+}
+
+.swiper-slide[data-transition="scale-x"] {
+	.media-container {
+		transform: scaleX(0);
+		opacity: 0;
+		transition: all 1s var(--ease), opacity 500ms var(--ease);
+	}
+}
+
+.swiper-slide[data-transition="scale-x"].swiper-slide-active {
+	.media-container {
+		transform: scaleX(1);
+		opacity: 1;
+		transition: all 2s var(--ease), opacity 3s var(--ease);
+	}
+}
+
+.swiper-pagination-bullet {
+	border: 1px solid var(--color-feature);
+}

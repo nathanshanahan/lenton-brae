@@ -4,10 +4,19 @@
 @import 'helpers';
 @import 'accessibility';
 
+@import 'swiper/css';
+@import 'swiper/css/a11y';
+@import 'swiper/css/autoplay';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/effect-fade';
+
+@import 'color-themes';
 @import 'typography';
 @import 'global';
 @import 'reveals';
+@import 'layouts';
 @import 'components';
 
-
 @import 'pages';
+@import 'modules';

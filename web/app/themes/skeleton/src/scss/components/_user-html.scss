@@ -1,3 +1,58 @@
+:root {
+	--user-html-content-gap: 1rem;
+	--user-html-list-indentation: 1.25rem;
+	--user-html-blockquote-offset: 2rem;
+	--user-html-blockquote-border-width: 1px;
+	--footnote-padding: 0.75rem;
+	--footnote-max-width: 13.75rem;
+	--footnote-block-size: 1rem;
+	--footnote-font-size: 0.75rem;
+	--footnote-background-color: var(--color-op-blue-dark);
+	--footnote-color: var(--color-white);
+}
+
 .user-html {
+
+	display: flex;
+	flex-direction: column;
+	gap: var(--_user-html-content-gap, var(--user-html-content-gap));
+
+	blockquote {
+		display: flex;
+		flex-direction: column;
+		gap: var(--_user-html-content-gap, var(--user-html-content-gap));
+		border-left: 1px solid var(--_soft-border-color, var(--soft-border-color, rgba(38, 48, 70, 0.10)));
+		padding-left: var(--_user-html-blockquote-offset, var(--user-html-blockquote-offset));
+		margin-left: calc((var(--_user-html-blockquote-offset, var(--user-html-blockquote-offset)) -1px) * -1);
+	}
+
+	h2,
+	p,
+	li {
+		margin: 0;
+		padding: 0;
+	}
+
+	ul {
+		list-style-type: disc;
+		padding-left: var(--_user-html-list-indentation, var(--user-html-list-indentation));
+		list-style-position: inside;
+	}
+
+	ol {
+		list-style-type: decimal-leading-zero;
+		padding-left: var(--_user-html-list-indentation, var(--user-html-list-indentation));
+		list-style-position: inside;
+	}
+
+	p:not([class]),
+	li:not([class]) {
+		@extend .type-style-p;
+	}
+
+	a {
+		text-underline-position: under;
+	}
+
 
 }

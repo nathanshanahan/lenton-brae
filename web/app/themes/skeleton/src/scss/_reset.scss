@@ -3,14 +3,12 @@
 }
 
 *::before,
-*::after
-{
+*::after {
 	box-sizing: inherit;
 }
 
 html,
-body
-{
+body {
 	padding: 0;
 	margin: 0;
 }
@@ -24,16 +22,14 @@ header,
 nav,
 section,
 details,
-summary
-{
+summary {
 	display: block;
 }
 
 button,
 input,
 select,
-textarea
-{
+textarea {
 	font: inherit;
 }
 
@@ -42,19 +38,26 @@ h2,
 h3,
 h4,
 h5,
-h6
-{
+h6 {
 	margin-top: unset;
 	margin-bottom: unset;
 }
 
-a
-{
+a {
 	color: inherit;
 }
 
 em,
-strong
-{
+strong {
 	word-wrap: break-word;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
 }

@@ -18,7 +18,8 @@ $breakpoints: (
 	'laptop': 1536px,
 	'desktop': 2000px,
 	'desktop-extended': 2500px,
-	'content': 1480px,
+	'content': 1408px,
+	'content-gutters': 1516px,
 );
 
 /**
@@ -49,6 +50,17 @@ $z: (
  * Styles
  */
 
-$maxContentWidth: 1260px;
+$maxContentWidth: 1408px;
+$tranition-timing: 420ms;
 $ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
+
+:root {
+	--content-width: 88rem;
+	--content-gutter: 3.375rem;
+	--content-max-width: calc(var(--content-width) + (var(--content-gutter) * 2));
+
+	--transition-timing: 420ms;
+	--ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+}

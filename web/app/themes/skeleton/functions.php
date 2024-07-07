@@ -14,30 +14,29 @@ include_once 'includes/gravity-forms.php';
  */
 new \App\ThemeSetup();
 
-
-function enqueue_scripts_styles() {
-
+function enqueue_scripts_styles()
+{
 	global $assets;
 
 	wp_enqueue_script_module('app-main', $assets->uri('main'), [], null);
 	wp_enqueue_style('app-main-css', $assets->uri('main-css'), [], null);
 }
-add_action('wp_enqueue_scripts', __NAMESPACE__.'\\enqueue_scripts_styles', 20);
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts_styles', 20);
 
-
-function enqueue_admin_scripts() {
+function enqueue_admin_scripts()
+{
 	global $assets;
 
 	wp_enqueue_style('app-admin-css', $assets->uri('admin-css'), [], null);
 	wp_enqueue_script('app-admin', $assets->uri('admin'), [], null);
 }
-add_action('admin_enqueue_scripts', __NAMESPACE__.'\\enqueue_admin_scripts', 20);
-
+add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\enqueue_admin_scripts', 20);
 
 // note: deactivate_plugins() may not exist if no plugins are installed
 if (WP_ENV !== 'production' && function_exists('\deactivate_plugins')) {
 
-	function deactivate_non_prod_plugins() {
+	function deactivate_non_prod_plugins()
+	{
 		$to_deactivate = [];
 
 		if (defined('BONE_DISABLE_MAILGUN') && BONE_DISABLE_MAILGUN) {
@@ -52,5 +51,62 @@ if (WP_ENV !== 'production' && function_exists('\deactivate_plugins')) {
 			\deactivate_plugins($to_deactivate);
 		}
 	}
-	add_action('admin_init', __NAMESPACE__.'\\deactivate_non_prod_plugins');
+	add_action('admin_init', __NAMESPACE__ . '\\deactivate_non_prod_plugins');
 }
+
+/**
+ * Add Distributor Role
+ */
+function add_distributor_role()
+{
+	add_role(
+		'distributor',
+		'Distributor',
+		[
+			'read' => true, // true allows this capability
+			'edit_posts' => false, // false denies this capability
+			'delete_posts' => false, // false denies this capability
+			// Add more capabilities as needed
+		]
+	);
+}
+add_action('init', __NAMESPACE__ . '\\add_distributor_role');
+
+/**
+ * Redirect Distributor after login
+ */
+function distributor_login_redirect($redirect_to, $request, $user)
+{
+	// Check if the user is logged in and has the distributor role
+	if (isset($user->roles) && in_array('distributor', $user->roles)) {
+		// Redirect to the distributor login page
+		return home_url('/distributors-login/');
+	}
+	// Otherwise, return the default redirect URL
+	return $redirect_to;
+}
+add_filter('login_redirect', __NAMESPACE__ . '\\distributor_login_redirect', 10, 3);
+
+/**
+ * Wrap WordPress error messages in a custom class
+ */
+function wrap_wp_error_messages($buffer)
+{
+	$error_class = 'custom-error-class'; // Define your custom class here
+	$pattern = '/<div class="(error|updated)">(.*?)<\/div>/s';
+	$replacement = '<div class="$1 ' . $error_class . '">$2</div>';
+	return preg_replace($pattern, $replacement, $buffer);
+}
+
+function buffer_start()
+{
+	ob_start(__NAMESPACE__ . '\\wrap_wp_error_messages');
+}
+
+function buffer_end()
+{
+	ob_end_flush();
+}
+
+add_action('wp_head', __NAMESPACE__ . '\\buffer_start', 1);
+add_action('wp_footer', __NAMESPACE__ . '\\buffer_end', 1);

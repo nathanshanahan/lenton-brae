@@ -8,6 +8,7 @@ import SwupScrollPlugin from '@swup/scroll-plugin';
 import GlobalMeasurements from './modules/global-measurements';
 import { watchForReveals } from './modules/reveals';
 import { rerunGravityFormsScripts } from './modules/gravity-forms';
+import { initCarousel } from './modules/carousels';
 
 const options = {
 	linkSelector: `a[href^="${window.location.origin}"]:not([data-no-swup]):not([target="_blank"]), a[href^="/"]:not([data-no-swup]):not([target="_blank"]), a[href^="#"]:not([data-no-swup]):not([target="_blank"])`,
@@ -30,9 +31,11 @@ window.swup = swup;
 window.addEventListener('DOMContentLoaded', () => {
 	GlobalMeasurements.start();
 	watchForReveals();
+	initCarousel();
 })
 
 swup.hooks.on('content:replace', () => {
 	watchForReveals();
 	rerunGravityFormsScripts();
+	initCarousel();
 });
