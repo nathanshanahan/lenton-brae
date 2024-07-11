@@ -67,7 +67,8 @@
                         "square": "Square",
                         "banner": "Banner",
                         "aspect-video": "Video (16:9)",
-                        "map": "Custom Map SVG"
+                        "map": "Custom Map SVG",
+                        "directions-svg": "Custom Directions SVG"
                     },
                     "default_value": false,
                     "return_format": "value",
@@ -392,5 +393,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720665795
+    "modified": 1720732941
 }

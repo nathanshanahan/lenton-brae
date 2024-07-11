@@ -22,7 +22,6 @@ $atts['data-layout'] = $args['content_position'] ?? 'default';
 		<?php partial('partials/media', '', [
 			'media' => $media,
 			'class' => "{$block}__media",
-			'display' => "viewport-height",
 			'data-reveal' => "up",
 		]) ?>
 

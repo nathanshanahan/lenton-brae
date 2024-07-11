@@ -39,9 +39,6 @@
 	}
 }
 
-
-
-
 @mixin underline-hover($color: currentColor, $duration: var(--transition-timing), $height: 0.09375rem) {
 	position: relative;
 	display: inline-block;
@@ -139,13 +136,15 @@
 	&--featured,
 	&[data-style="featured"] {
 		background-color: var(--_feature-color, var(--feature-color));
-		color: var(--_text-color, var(--text-color));
+		color: var(--color-white);
 		text-transform: uppercase;
 		border: 1px solid var(--_feature-color, var(--feature-color));
 		padding: 1rem;
 		border-radius: 50em;
 		transition: all var(--transition-timing) var(--ease);
-		min-width: fit-content;
+		width: fit-content;
+		min-width: 5.625rem;
+		text-align: center;
 
 		&:hover,
 		&:focus-visible {

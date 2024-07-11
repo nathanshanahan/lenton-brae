@@ -7,7 +7,7 @@ $menu = 'masthead-menu';
 
 <div class="<?= $block ?>">
 	<div class="<?= $block ?>__layout content-lockup">
-		<div class="<?= $block ?>__logo-lockup" data-reveal="up">
+		<div class="<?= $block ?>__logo-lockup">
 			<a class="<?= $block ?>__logo-link" href="<?= esc_url(home_url('/')); ?>" rel="home">
 				<?php partial('partials/svg-logo');	?>
 			</a>

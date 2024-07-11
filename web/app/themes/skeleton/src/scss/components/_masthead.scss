@@ -12,6 +12,29 @@ body.home {
 	.masthead {
 		position: absolute;
 	}
+
+	.lenton-brae-logo {
+		fill: currentColor;
+		transform: scale(1);
+		transition: all 5s var(--ease);
+
+		.margaret-river {
+			fill: currentColor;
+			transition: all 5s var(--ease);
+		}
+	}
+}
+
+.lenton-brae-logo {
+	fill: currentColor;
+	transform: scale(0.8);
+	transform-origin: center top;
+	transition: all 5s var(--ease);
+
+	.margaret-river {
+		transition: all 5s var(--ease);
+		fill: var(--_color-feature, var(--color-feature));
+	}
 }
 
 .masthead {
@@ -60,15 +83,6 @@ body.home {
 
 }
 
-
-
-.lenton-brae-logo {
-	fill: currentColor;
-
-	.margaret-river {
-		fill: currentColor;
-	}
-}
 
 .masthead-menu {
 	display: flex;

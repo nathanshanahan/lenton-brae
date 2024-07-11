@@ -1487,7 +1487,7 @@
                                             "required": 0,
                                             "conditional_logic": 0,
                                             "wrapper": {
-                                                "width": "",
+                                                "width": "50",
                                                 "class": "",
                                                 "id": ""
                                             },
@@ -1506,11 +1506,11 @@
                                             "name": "alignment",
                                             "aria-label": "",
                                             "type": "button_group",
-                                            "instructions": "",
+                                            "instructions": "Choose the alignment for the text in relation to the image",
                                             "required": 0,
                                             "conditional_logic": 0,
                                             "wrapper": {
-                                                "width": "",
+                                                "width": "50",
                                                 "class": "",
                                                 "id": ""
                                             },
@@ -1519,6 +1519,57 @@
                                                 "center": "Center"
                                             },
                                             "default_value": "center",
+                                            "return_format": "value",
+                                            "allow_null": 0,
+                                            "layout": "horizontal"
+                                        },
+                                        {
+                                            "key": "field_669047cbfa888",
+                                            "label": "Add Arch",
+                                            "name": "add_arch",
+                                            "aria-label": "",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui_on_text": "",
+                                            "ui_off_text": "",
+                                            "ui": 1
+                                        },
+                                        {
+                                            "key": "field_66904806fa889",
+                                            "label": "Arch Position",
+                                            "name": "arch_position",
+                                            "aria-label": "",
+                                            "type": "button_group",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": [
+                                                [
+                                                    {
+                                                        "field": "field_669047cbfa888",
+                                                        "operator": "==",
+                                                        "value": "1"
+                                                    }
+                                                ]
+                                            ],
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "left": "Left",
+                                                "center": "Center"
+                                            },
+                                            "default_value": "",
                                             "return_format": "value",
                                             "allow_null": 0,
                                             "layout": "horizontal"
@@ -1928,6 +1979,64 @@
                                                     "return_format": "value",
                                                     "allow_null": 0,
                                                     "layout": "horizontal",
+                                                    "parent_repeater": "field_66440f4fcef42"
+                                                },
+                                                {
+                                                    "key": "field_669039a73606f",
+                                                    "label": "Heading",
+                                                    "name": "heading",
+                                                    "aria-label": "",
+                                                    "type": "text",
+                                                    "instructions": "",
+                                                    "required": 0,
+                                                    "conditional_logic": [
+                                                        [
+                                                            {
+                                                                "field": "field_66440fdfcef45",
+                                                                "operator": "==",
+                                                                "value": "text"
+                                                            }
+                                                        ]
+                                                    ],
+                                                    "wrapper": {
+                                                        "width": "",
+                                                        "class": "",
+                                                        "id": ""
+                                                    },
+                                                    "default_value": "",
+                                                    "maxlength": "",
+                                                    "placeholder": "",
+                                                    "prepend": "",
+                                                    "append": "",
+                                                    "parent_repeater": "field_66440f4fcef42"
+                                                },
+                                                {
+                                                    "key": "field_669039dc36070",
+                                                    "label": "Sub Heading",
+                                                    "name": "sub_heading",
+                                                    "aria-label": "",
+                                                    "type": "textarea",
+                                                    "instructions": "",
+                                                    "required": 0,
+                                                    "conditional_logic": [
+                                                        [
+                                                            {
+                                                                "field": "field_66440fdfcef45",
+                                                                "operator": "==",
+                                                                "value": "text"
+                                                            }
+                                                        ]
+                                                    ],
+                                                    "wrapper": {
+                                                        "width": "",
+                                                        "class": "",
+                                                        "id": ""
+                                                    },
+                                                    "default_value": "",
+                                                    "maxlength": "",
+                                                    "rows": 2,
+                                                    "placeholder": "",
+                                                    "new_lines": "br",
                                                     "parent_repeater": "field_66440f4fcef42"
                                                 },
                                                 {
@@ -2469,5 +2578,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720672079
+    "modified": 1720732408
 }

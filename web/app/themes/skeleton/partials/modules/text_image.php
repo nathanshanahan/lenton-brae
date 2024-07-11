@@ -9,18 +9,32 @@ $is_set_media = \App\validateMediaComponent($media);
 
 $atts['data-layout'] = $args['layout'] ?? 'text-first'; // text-first, media-first	
 $atts['data-alignment'] = $args['alignment'] ?? 'center'; // top, center
+
+$has_arch = $args['add_arch'] ?? false;
+$arch_position = $args['arch_position'] ?? 'left'; // left, center 
 ?>
 
 <section <?= atts_to_str($atts) ?>>
 	<div class="content-lockup <?= $block ?>__content-lockup">
 
-		<?php if ($is_set_media) : ?>
-			<?php partial('partials/media', '', [
-				'media' => $media,
-				'class' => "{$block}__media-lockup",
-				'data-reveal' => "left",
-			]) ?>
+		<?php if ($has_arch) : ?>
+			<div class="<?= $block ?>__graphics-lockup graphics-lockup garaphics-lockup--<?= $arch_position ?>">
+			<?php endif; ?>
+			<?php if ($is_set_media) : ?>
+				<?php partial('partials/media', '', [
+					'media' => $media,
+					'class' => "{$block}__media-lockup",
+					'data-reveal' => "left",
+				]) ?>
+			<?php endif; ?>
+			<?php if ($has_arch) : ?>
+				<svg class="<?= $block . '__graphic-arch'; ?> graphic-arch" width="448" height="604" viewBox="0 0 448 604" fill="none">
+					<use xlink:href="#graphic-arch"></use>
+				</svg>
+
+			</div>
 		<?php endif; ?>
+
 
 		<div class="<?= $block ?>__text-lockup">
 			<?php if (!empty($content['heading'])) : ?>
@@ -36,6 +50,7 @@ $atts['data-alignment'] = $args['alignment'] ?? 'center'; // top, center
 					<?= $content['sub_heading'] ?>
 				</p>
 			<?php endif; ?>
+
 			<?php if (!empty($content['content'])) :
 				partial('partials/user-html', '', [
 					'content' => $content['content'],
@@ -52,8 +67,5 @@ $atts['data-alignment'] = $args['alignment'] ?? 'center'; // top, center
 				]);
 			endif; ?>
 		</div>
-
-
-
 	</div>
 </section>

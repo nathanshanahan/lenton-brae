@@ -10,6 +10,10 @@
 	z-index: var(--_graphics-lockup-z-index, var(--graphics-lockup-z-index));
 }
 
+.garaphics-lockup--center {
+	--_graphic-arch-left: 20%;
+}
+
 .graphic-arch {
 	color: var(--color-feature);
 	position: absolute;

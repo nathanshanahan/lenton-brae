@@ -73,7 +73,7 @@
  	font-optical-sizing: auto;
  	font-style: normal;
  	font-weight: 400;
- 	font-size: clamp(10px, 1.14vw, 16px); // Scalling designs
+ 	font-size: clamp(10px, 1.1vw, 16px); // Scalling designs
  }
 
  body {
@@ -85,6 +85,7 @@
  	font-size: var(--type-size-h1);
  	line-height: var(--type-line-height-h1);
  	font-weight: 500;
+ 	text-wrap: pretty;
  }
 
  .type-style-h2 {
@@ -92,6 +93,7 @@
  	font-size: var(--type-size-h2);
  	line-height: var(--type-line-height-h2);
  	font-weight: 500;
+ 	text-wrap: pretty;
  }
 
  .type-style-h3 {
@@ -99,6 +101,7 @@
  	font-size: var(--type-size-h3);
  	line-height: var(--type-line-height-h3);
  	font-weight: 500;
+ 	text-wrap: pretty;
  }
 
  .type-style-h4 {
@@ -107,6 +110,7 @@
  	line-height: var(--type-line-height-h4);
  	font-weight: 400;
  	text-transform: uppercase;
+ 	text-wrap: pretty;
  }
 
  .type-style-h4 em {

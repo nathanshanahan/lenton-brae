@@ -57,6 +57,10 @@
 		aspect-ratio: var(--_media-map-svg-aspect-ratio, var(--media-map-svg-aspect-ratio));
 	}
 
+	&--directions-svg {
+		aspect-ratio: 590 / 688;
+	}
+
 	img,
 	video,
 	iframe {

@@ -43,6 +43,10 @@
 		grid-row: 1 / 2;
 	}
 
+	&__heading {
+		padding-bottom: 1rem;
+	}
+
 	&__sub-heading {
 		color: var(--_feature-color, var(--feature-color));
 	}
