@@ -1,9 +1,10 @@
 .m-columns {
 	--_grid-row-gap: var(--grid-column-gap);
+	--padding-top: 5rem;
+	--padding-bottom: 5rem;
 
 	&__column {
 		grid-column: calc(var(--column-offset) + 1) / span var(--column-count);
-		// overflow: hidden; - not sure if removing this will cause issues. 
 
 		@include screenDown('tablet-portrait') {
 			grid-column: 1 / -1;
