@@ -10,7 +10,7 @@ $columns = $args['columns'] ?? '';
 ?>
 
 <section <?= atts_to_str($atts) ?>>
-	<div class="grid-container <?= $block . '__grid-container' ?>">
+	<div class="content-lockup grid-container <?= $block . '__grid-container' ?>">
 		<?php if (!empty($columns) && is_array($columns)) : ?>
 			<?php foreach ($columns as $column) : ?>
 

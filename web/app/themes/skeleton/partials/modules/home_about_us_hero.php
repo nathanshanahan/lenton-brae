@@ -70,9 +70,6 @@ $our_story = $args['our_story'] ?? '';
 				</svg>
 
 			</div>
-
-
 		</div>
 	<?php endif; ?>
-
 </div>
