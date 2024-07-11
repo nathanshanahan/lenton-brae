@@ -25,13 +25,27 @@
 }
 
 // Color Themes 
-[data-color-theme="white"] {
+[data-color-theme="transparent"] {
+	--_background-color: transparent;
+	--_text-color: var(--color-white);
+	--_feature-color: var(--color-feature);
+}
+
+[data-color-theme="transparent-dark"] {
+	--_background-color: transparent;
+	--_text-color: var(--color-black);
+	--_feature-color: var(--color-feature);
+}
+
+[data-color-theme="white"],
+[data-color-theme="light"] {
 	--_background-color: var(--color-white);
 	--_text-color: var(--color-black);
 	--_feature-color: var(--color-feature);
 }
 
-[data-color-theme="black"] {
+[data-color-theme="black"],
+[data-color-theme="dark"] {
 	--_background-color: var(--color-black-100);
 	--_text-color: var(--color-white);
 	--_feature-color: var(--color-feature);

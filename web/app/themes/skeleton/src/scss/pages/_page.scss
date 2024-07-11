@@ -1,0 +1,7 @@
+main {
+	body:not(.home) & {
+		padding-top: var(--masthead-height);
+	}
+
+	min-height: calc(100dvh - var(--page-footer-height));
+}

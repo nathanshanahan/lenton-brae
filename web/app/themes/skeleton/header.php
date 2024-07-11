@@ -7,11 +7,12 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
-	<?php //partial('partials/tracking-head'); 
-	?>
+	<?php partial('partials/tracking-head'); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<?php $page_color_theme = get_field('page_color_theme', get_the_ID()) ?? 'light'; ?>
+
+<body <?php body_class(); ?> data-color-theme="<?= $page_color_theme ?>">
 	<?php partial('partials/svg-symbols'); ?>
 
 	<?php partial('partials/tracking-body');

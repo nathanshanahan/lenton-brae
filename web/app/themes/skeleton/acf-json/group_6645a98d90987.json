@@ -63,17 +63,9 @@
                         "id": ""
                     },
                     "choices": {
-                        "dark-blue": "Dark Blue",
-                        "dark-blue-outline": "Dark Blue Outline",
-                        "green": "Green",
-                        "green-outline": "Green Outline",
-                        "yellow": "Yellow",
-                        "yellow-outline": "Yellow Outline",
-                        "white": "White",
-                        "white-outline": "White Outline",
-                        "naked-arrow-left": "Text Arrow Left",
-                        "naked-arrow-right": "Text Arrow Right",
-                        "naked-white": "White Text"
+                        "text": "Text",
+                        "featured": "Solid",
+                        "pill": "Border"
                     },
                     "default_value": false,
                     "return_format": "value",
@@ -151,5 +143,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720218697
+    "modified": 1720471862
 }

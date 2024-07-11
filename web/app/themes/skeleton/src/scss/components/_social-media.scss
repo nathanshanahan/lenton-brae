@@ -1,0 +1,20 @@
+:root {
+	--social-media-icons-gap: 0.625rem;
+}
+
+.social-media {
+	display: flex;
+	flex-direction: row;
+	justify-content: end;
+	gap: var(--_social-media-icons-gap, var(--social-media-icons-gap));
+
+	a {
+		transition: color var(--transition-timing) var(--ease);
+
+		&:hover,
+		&:focus-visible {
+			color: var(--_icon-hover-color, var(--icon-hover-color));
+		}
+	}
+
+}

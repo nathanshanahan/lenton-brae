@@ -50,27 +50,31 @@
                     "label": "Display",
                     "name": "display",
                     "aria-label": "",
-                    "type": "button_group",
+                    "type": "select",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "50",
                         "class": "",
                         "id": ""
                     },
                     "choices": {
                         "natural": "Natural",
-                        "content-height": "Content Height",
+                        "viewport-height": "Viewport Height",
                         "portrait": "Portrait",
                         "landscape": "Landscape",
                         "square": "Square",
+                        "banner": "Banner",
                         "aspect-video": "Video (16:9)"
                     },
-                    "default_value": "",
+                    "default_value": false,
                     "return_format": "value",
+                    "multiple": 0,
                     "allow_null": 0,
-                    "layout": "horizontal"
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
                 },
                 {
                     "key": "field_664562e8d7080",
@@ -387,5 +391,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720218697
+    "modified": 1720642029
 }

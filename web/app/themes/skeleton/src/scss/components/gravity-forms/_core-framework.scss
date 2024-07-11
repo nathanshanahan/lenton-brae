@@ -8,43 +8,49 @@ needed.
 
 
 
+
+
 .gform_wrapper {
+
+	--gf-ctrl-border-width: 0.03125rem;
+	--gf-local-border-color: var(--color-warm-black, currentColor);
+
+
 	--gf-local-appearance: var(--gf-ctrl-appearance);
-    --gf-local-bg-color: var(--gf-ctrl-bg-color);
-    --gf-local-height: var(--gf-ctrl-size);
-    --gf-local-radius: var(--gf-ctrl-radius, 2px);
-    --gf-local-border-color: var(--gf-ctrl-border-color, currentColor);
-    --gf-local-border-width: var(--gf-ctrl-border-width, 1px);
-    --gf-local-border-style: var(--gf-ctrl-border-style, solid);
-    --gf-local-border-block-start: var(--gf-local-border-width) var(--gf-local-border-style) var(--gf-local-border-color);
-    --gf-local-border-block-end: var(--gf-local-border-width) var(--gf-local-border-style) var(--gf-local-border-color);
-    --gf-local-border-inline-start: var(--gf-local-border-width) var(--gf-local-border-style) var(--gf-local-border-color);
-    --gf-local-border-inline-end: var(--gf-local-border-width) var(--gf-local-border-style) var(--gf-local-border-color);
-    --gf-local-shadow: var(--gf-ctrl-shadow);
-    --gf-local-color: var(--gf-ctrl-color);
-    --gf-local-display: block;
-    --gf-local-font-family: var(--gf-ctrl-font-family);
-    --gf-local-font-size: var(--gf-ctrl-font-size);
-    --gf-local-font-style: var(--gf-ctrl-font-style);
-    --gf-local-font-weight: var(--gf-ctrl-font-weight);
-    --gf-local-letter-spacing: var(--gf-ctrl-letter-spacing);
-    --gf-local-line-height: var(--gf-ctrl-line-height);
-    --gf-local-min-height: auto;
-    --gf-local-outline: var(--gf-ctrl-outline);
-    --gf-local-outline-offset: var(--gf-ctrl-outline-offset);
-    --gf-local-padding-x: var(--gf-ctrl-padding-x, 0.5rem);
-    --gf-local-padding-y: var(--gf-ctrl-padding-y, 0.5rem);
-    --gf-local-transition: var(--gf-ctrl-transition);
-    --gf-local-width: 100%;
-    --gf-local-row-gap: var(--gf-row-gap, 1rem);
-    --gf-local-column-gap: var(--gf-column-gap, 1rem);
+	--gf-local-bg-color: var(--gf-ctrl-bg-color);
+	--gf-local-height: var(--gf-ctrl-size);
+	--gf-local-radius: var(--gf-ctrl-radius, 2px);
+	--gf-local-border-width: var(--gf-ctrl-border-width, 1px);
+	--gf-local-border-style: var(--gf-ctrl-border-style, solid);
+	--gf-local-border-block-start: var(--gf-local-border-width) var(--gf-local-border-style) var(--gf-local-border-color);
+	--gf-local-border-block-end: var(--gf-local-border-width) var(--gf-local-border-style) var(--gf-local-border-color);
+	--gf-local-border-inline-start: var(--gf-local-border-width) var(--gf-local-border-style) var(--gf-local-border-color);
+	--gf-local-border-inline-end: var(--gf-local-border-width) var(--gf-local-border-style) var(--gf-local-border-color);
+	--gf-local-shadow: var(--gf-ctrl-shadow);
+	--gf-local-color: var(--gf-ctrl-color);
+	--gf-local-display: block;
+	--gf-local-font-family: var(--gf-ctrl-font-family);
+	--gf-local-font-size: var(--gf-ctrl-font-size);
+	--gf-local-font-style: var(--gf-ctrl-font-style);
+	--gf-local-font-weight: var(--gf-ctrl-font-weight);
+	--gf-local-letter-spacing: var(--gf-ctrl-letter-spacing);
+	--gf-local-line-height: var(--gf-ctrl-line-height);
+	--gf-local-min-height: auto;
+	--gf-local-outline: var(--gf-ctrl-outline);
+	--gf-local-outline-offset: var(--gf-ctrl-outline-offset);
+	--gf-local-padding-x: var(--gf-ctrl-padding-x, 0.5rem);
+	--gf-local-padding-y: var(--gf-ctrl-padding-y, 0.5rem);
+	--gf-local-transition: var(--gf-ctrl-transition);
+	--gf-local-width: 100%;
+	--gf-local-row-gap: var(--gf-row-gap, 1rem);
+	--gf-local-column-gap: var(--gf-column-gap, 1rem);
 
 	--gf-local-label-gap: #{rem(8)};
 }
 
 .gform_fields {
 	display: grid;
-    grid-template-columns: repeat(12, 1fr);
+	grid-template-columns: repeat(12, 1fr);
 	gap: var(--gf-local-row-gap) var(--gf-local-column-gap);
 
 	fieldset {
@@ -59,14 +65,14 @@ needed.
 .gfield_visibility_hidden,
 .gf_invisible {
 	inset-inline-start: -9999px;
-    position: absolute;
-    visibility: hidden;
+	position: absolute;
+	visibility: hidden;
 }
 
 
 .gfield {
 	grid-column: 1 / -1;
-    min-inline-size: 0;
+	min-inline-size: 0;
 
 	@include screenUp('tablet-portrait') {
 		&--width-quarter {
@@ -167,6 +173,18 @@ needed.
 
 .gfield_required {
 	color: red;
+
+	.gfield_required_text {
+		@extend .screen-reader-text;
+	}
+
+	&::after {
+		content: '*';
+		display: inline-block;
+		font-size: 16px;
+		color: red;
+		padding-left: 0.25ch;
+	}
 }
 
 .gfield_description {
@@ -190,7 +208,7 @@ needed.
 
 .gform-grid-col {
 	flex: none;
-    inline-size: 100%;
+	inline-size: 100%;
 
 	&--size-auto {
 
@@ -200,10 +218,18 @@ needed.
 	}
 }
 
-.ginput_complex {
+.ginput_complex {}
 
+.ginput_container {}
+
+.gform_footer {
+	padding-top: 16px;
+	display: flex;
+	flex-direction: row;
+	justify-content: end;
 }
 
-.ginput_container {
-
+.gform_button {
+	--_text-color: var(--color-white);
+	@extend .btn--featured;
 }

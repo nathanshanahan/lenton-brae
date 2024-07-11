@@ -1,0 +1,31 @@
+.m-page-header {
+	--padding-block: 4.875rem;
+	--content-max-width: 48rem;
+	--block-spacing: 2rem;
+
+	&[data-layout="overlay"] {
+		--_padding-block: 0;
+	}
+
+	padding-block: var(--_padding-block, var(--padding-block));
+
+	&__header-lockup {
+		margin-inline: auto;
+		max-width: var(--content-max-width);
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		gap: var(--block-spacing);
+	}
+
+	h1 {
+		color: var(--_color-feature, var(--color-feature));
+	}
+
+	&__overlay {
+		--_color-feature: var(--_text-color, var(--text-color));
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

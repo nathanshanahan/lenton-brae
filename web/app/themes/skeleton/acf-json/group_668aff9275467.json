@@ -1,9 +1,9 @@
 {
-    "key": "group_668af60327543",
-    "title": "Post - News",
+    "key": "group_668aff9275467",
+    "title": "Post - Events",
     "fields": [
         {
-            "key": "field_668af603c4fbb",
+            "key": "field_668aff9276a8a",
             "label": "Card",
             "name": "card",
             "aria-label": "",
@@ -19,7 +19,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_668af621c4fbc",
+                    "key": "field_668aff9277045",
                     "label": "Media",
                     "name": "media",
                     "aria-label": "",
@@ -41,7 +41,7 @@
                     "prefix_name": 0
                 },
                 {
-                    "key": "field_668af641c4fbd",
+                    "key": "field_668aff9277047",
                     "label": "Title",
                     "name": "title",
                     "aria-label": "",
@@ -61,7 +61,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_668af649c4fbe",
+                    "key": "field_668aff927704a",
                     "label": "Excerpt",
                     "name": "excerpt",
                     "aria-label": "",
@@ -81,6 +81,76 @@
                     "new_lines": "br"
                 }
             ]
+        },
+        {
+            "key": "field_668affa1d2aad",
+            "label": "Event",
+            "name": "event",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_668affadd2aae",
+                    "label": "Event Date",
+                    "name": "event_date",
+                    "aria-label": "",
+                    "type": "date_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "d\/m\/Y",
+                    "return_format": "d\/m\/Y",
+                    "first_day": 1
+                },
+                {
+                    "key": "field_668b002d3eee3",
+                    "label": "Start Time",
+                    "name": "start_time",
+                    "aria-label": "",
+                    "type": "time_picker",
+                    "instructions": "Optional: Leave this field blank if not needed.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "g:i a",
+                    "return_format": "g:i a"
+                },
+                {
+                    "key": "field_668b00e93eee4",
+                    "label": "End Time",
+                    "name": "end_time",
+                    "aria-label": "",
+                    "type": "time_picker",
+                    "instructions": "Optional: Leave this field blank if not needed.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "g:i a",
+                    "return_format": "g:i a"
+                }
+            ]
         }
     ],
     "location": [
@@ -88,7 +158,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "post"
+                "value": "event"
             }
         ]
     ],
@@ -113,5 +183,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720391806
+    "modified": 1720391835
 }

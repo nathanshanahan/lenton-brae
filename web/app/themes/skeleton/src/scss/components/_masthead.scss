@@ -8,6 +8,10 @@
 
 body.home {
 	--_masthead-color: var(--color-white);
+
+	.masthead {
+		position: absolute;
+	}
 }
 
 .masthead {
@@ -17,6 +21,8 @@ body.home {
 	right: 0;
 	z-index: var(--masthead-z-index);
 	color: var(--_masthead-color, var(--masthead-color));
+	background-color: var(--_background-color, var(--background-color));
+	color: var(--_text-color, var(--text-color));
 
 	&__layout {
 		display: flex;
@@ -41,7 +47,6 @@ body.home {
 		&:hover {
 			color: var(--color-feature);
 		}
-
 	}
 
 	hr {

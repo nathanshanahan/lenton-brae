@@ -1,0 +1,40 @@
+.m-latest-news-carousel {
+
+	--_padding-block: 3.875rem;
+	--card-max-width: 28.625rem;
+
+	&__card-lockup {
+		// inset: var(--_padding-block, var(--padding-block));
+		// left: 0;
+		padding: var(--_padding-block, var(--padding-block));
+		margin: var(--_padding-block, var(--padding-block));
+		margin-left: 0;
+		max-width: var(--card-max-width);
+		display: flex;
+		flex-direction: column;
+	}
+
+	.type-style-h1 {
+		padding-bottom: 4.5rem;
+	}
+
+	&__excerpt {
+		padding-top: 2rem;
+	}
+
+	&__buttons-container {
+		padding-top: 3.875rem;
+	}
+
+	&__pagination-lockup {
+		position: absolute;
+		bottom: var(--_padding-block, var(--padding-block));
+		left: 0;
+		right: 0;
+		z-index: 2;
+
+		@include screenDown('content-gutters') {
+			left: auto;
+		}
+	}
+}

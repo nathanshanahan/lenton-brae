@@ -63,7 +63,9 @@
                 "green": "Green",
                 "blue": "Blue",
                 "brown": "Brown",
-                "textured": "Textured"
+                "textured": "Textured",
+                "transparent": "White Text - Transparent Background",
+                "transparent-dark": "Black Text - Transparent Background"
             },
             "default_value": false,
             "return_format": "value",
@@ -92,5 +94,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720311730
+    "modified": 1720662324
 }

@@ -1,0 +1,53 @@
+{
+    "key": "group_668edd4981860",
+    "title": "Page Settings",
+    "fields": [
+        {
+            "key": "field_668edd491f766",
+            "label": "Page Color Theme",
+            "name": "page_color_theme",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Set the navigation header style and page colour theme",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "light": "Light",
+                "dark": "Dark",
+                "transparent": "Transparent Light",
+                "transparent-dark": "Transparent Dark"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1720643022
+}

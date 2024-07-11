@@ -13,6 +13,7 @@ include_once 'includes/gravity-forms.php';
  * start by looking here.
  */
 new \App\ThemeSetup();
+new \App\PostTypes\Events();
 
 function enqueue_scripts_styles()
 {
@@ -110,3 +111,33 @@ function buffer_end()
 
 add_action('wp_head', __NAMESPACE__ . '\\buffer_start', 1);
 add_action('wp_footer', __NAMESPACE__ . '\\buffer_end', 1);
+
+/**
+ * Validate Media Component
+ *
+ * Checks if at least one of the media types (image, video mp4, or oembed) is not null or false.
+ *
+ * @param array $media The media component array.
+ * @return bool True if at least one media type is valid, false otherwise.
+ */
+function validateMediaComponent($media)
+{
+	// Check if the media component array is set and has the required keys
+	if (!isset($media)) {
+		return false;
+	}
+
+	$mediaComponent = $media;
+
+	// Check if image, video mp4, and oembed are all null or false
+	$isImageValid = isset($mediaComponent['image']) && $mediaComponent['image'] !== false;
+	$isVideoMp4Valid = isset($mediaComponent['video']['mp4']) && $mediaComponent['video']['mp4'] !== false;
+	$isOembedValid = isset($mediaComponent['oembed']) && $mediaComponent['oembed'] !== null;
+
+	// Return false if all three are null or false
+	if (!$isImageValid && !$isVideoMp4Valid && !$isOembedValid) {
+		return false;
+	}
+
+	return true;
+}

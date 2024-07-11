@@ -34,8 +34,21 @@ window.addEventListener('DOMContentLoaded', () => {
 	initCarousel();
 })
 
-swup.hooks.on('content:replace', () => {
+swup.hooks.on('content:replace', (e) => {
 	watchForReveals();
 	rerunGravityFormsScripts();
 	initCarousel();
+
+	const currentPage = swup.cache.getCurrentPage();
+
+	if (currentPage.originalContent) {
+		const doc = new DOMParser().parseFromString(currentPage.originalContent, 'text/html');
+		const dataset = doc.body.dataset;
+
+		const sets = Object.keys(dataset);
+		sets.forEach(d => {
+			document.body.dataset[d] = dataset[d];
+		});
+	}
 });
+

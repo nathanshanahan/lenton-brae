@@ -1,0 +1,87 @@
+:root {
+	--newsletter-padding-block: 5rem;
+	--newsletter-content-gap: 5rem;
+	--footer-row-inline-spacing: 1rem;
+	--footer-row-block-spacing: 1rem;
+	--footer-padding-block: 2.5rem;
+}
+
+.p-page-footer {
+	--btn-color: var(--color-white);
+	--btn-hover-color: var(--_feature-color, var(--feature-color));
+	--_icon-hover-color: var(--btn-hover-color);
+
+	&__newsletter {
+		padding-block: var(--newsletter-padding-block);
+	}
+
+	&__newsletter-lockup {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	&__newsletter-title {
+		grid-column: 1/-1;
+		padding-bottom: 3.5rem;
+		@extend .type-style-h4-post;
+	}
+
+	&__newsletter-content-lockup {
+		padding-right: var(--newsletter-content-gap);
+	}
+
+	&__footer {
+		padding-block: var(--footer-padding-block);
+	}
+
+	&__footer-row {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		gap: var(--footer-row-inline-spacing);
+		padding-block: var(--footer-row-block-spacing);
+	}
+
+	&__footer-col {
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+		align-items: center;
+		gap: var(--footer-row-inline-spacing);
+	}
+
+	&__address-lockup {
+		display: flex;
+		flex-direction: row;
+		font-style: normal;
+		gap: var(--footer-row-inline-spacing);
+
+		a {
+			@include underline-hover(var(--color-feature));
+		}
+	}
+
+	&__acknowledgement-lockup {
+		max-width: 55.375rem;
+
+		.user-html p {
+			@extend .type-style-small;
+		}
+	}
+
+	&__menu {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+
+		li {
+			@extend .type-style-small;
+		}
+
+		a {
+			@include underline-hover(var(--color-feature));
+		}
+	}
+
+}

@@ -39,13 +39,7 @@
 	}
 }
 
-.btn {
-	@include buttonReset;
-}
 
-a {
-	color: inherit;
-}
 
 
 @mixin underline-hover($color: currentColor, $duration: var(--transition-timing), $height: 0.09375rem) {
@@ -57,7 +51,7 @@ a {
 		content: '';
 		position: absolute;
 		left: 0;
-		bottom: calc(-1 * #{$height} / 3); // Adjust the position based on height
+		bottom: calc(-1 * #{$height} * 2); // Adjust the position based on height
 		width: 100%;
 		height: $height; // Adjust the thickness of the underline
 		background-color: $color;
@@ -74,4 +68,119 @@ a {
 		transform: scaleX(1);
 		transform-origin: bottom left;
 	}
+}
+
+@mixin underline-hover-reverse($color: currentColor, $duration: var(--transition-timing), $height: 0.09375rem) {
+	position: relative;
+	display: inline-block;
+	text-decoration: none;
+
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: calc(-1 * #{$height} * 2); // Adjust the position based on height
+		width: 100%;
+		height: $height; // Adjust the thickness of the underline
+		background-color: $color;
+		transform: scaleX(1);
+		transform-origin: bottom right;
+		transition: none;
+
+		@include prefersReducedMotion(false) {
+			animation: none;
+		}
+	}
+
+	&:hover::after,
+	&:focus-visible::after {
+		@include prefersReducedMotion(false) {
+			animation: underline-grow $duration var(--ease) normal;
+		}
+	}
+
+	@keyframes underline-grow {
+		from {
+			transform: scaleX(0);
+			transform-origin: bottom left;
+		}
+
+		to {
+			transform: scaleX(1);
+			transform-origin: bottom left;
+		}
+	}
+
+}
+
+.buttons-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1rem;
+}
+
+.btn {
+	@include buttonReset;
+
+	font-family: "brandon-grotesque", sans-serif;
+	font-size: var(--_type-size-button, var(--type-size-button));
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05rem;
+	min-width: max-content;
+
+	&[data-style="text"] {
+		color: var(--_button-color, var(--button-color, var(--_feature-color, var(--feature-color))));
+		text-transform: uppercase;
+		@include underline-hover-reverse(var(--_button-underline-color, var(--button-underline-color, var(--_feature-color, var(--feature-color)))));
+	}
+
+	&--featured,
+	&[data-style="featured"] {
+		background-color: var(--_feature-color, var(--feature-color));
+		color: var(--_text-color, var(--text-color));
+		text-transform: uppercase;
+		border: 1px solid var(--_feature-color, var(--feature-color));
+		padding: 1rem;
+		border-radius: 50em;
+		transition: all var(--transition-timing) var(--ease);
+		min-width: fit-content;
+
+		&:hover,
+		&:focus-visible {
+			background-color: transparent;
+			color: var(--_feature-color, var(--feature-color));
+		}
+	}
+
+	&[data-style="pill"] {
+
+		background-color: transparent;
+		color: var(--btn-color,
+				var(--_feature-color,
+					var(--feature-color)));
+		text-transform: uppercase;
+		border: 1px solid var(--btn-color,
+				var(--_feature-color,
+					var(--feature-color)));
+		;
+		padding: 1rem;
+		border-radius: 50em;
+		transition: all var(--transition-timing) var(--ease);
+		min-width: fit-content;
+
+		&:hover,
+		&:focus-visible {
+			background-color: var(--btn-color,
+					var(--_feature-color,
+						var(--feature-color)));
+			;
+			color: var(--btn-hover-color, var(--_text-color, var(--text-color)));
+		}
+	}
+}
+
+a {
+	color: inherit;
 }

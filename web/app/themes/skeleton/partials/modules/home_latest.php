@@ -15,7 +15,9 @@ $showcase = $args['showcase'] ?? '';
 	<div class="<?= $block ?>__latest-lockup content-lockup">
 
 		<div class="<?= $block ?>__social-media-lockup">
-			<?php partial('partials/social_media');	?>
+			<?php partial('partials/social_media', '', [
+				'show_handle' => true,
+			]);	?>
 		</div>
 
 		<?php if (!empty($welcome)) : ?>
@@ -80,7 +82,8 @@ $showcase = $args['showcase'] ?? '';
 
 										<?php partial('partials/media', '', [
 											'media' => $row['media'],
-											'class' => "{$block}__media"
+											'class' => "{$block}__media",
+											'display' => 'natural',
 										]) ?>
 
 										<div class="<?= $block ?>__showcase-overlay overlay">

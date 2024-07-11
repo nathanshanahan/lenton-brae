@@ -3,7 +3,9 @@
 	--media-portait-aspect-ratio: 428/490;
 	--media-landscape-aspect-ratio: 364/200;
 	--media-video-aspect-ratio: 16/9;
+	--media-banner-aspect-ratio: 1800/852;
 	--caption-padding-inline: 0.75rem;
+	--overlay-inset: 0;
 }
 
 .media-container {
@@ -41,6 +43,10 @@
 		aspect-ratio: var(--_media-video-aspect-ratio, var(--media-video-aspect-ratio));
 	}
 
+	&--banner {
+		aspect-ratio: var(--_media-banner-aspect-ratio, var(--media-banner-aspect-ratio));
+	}
+
 	img,
 	video,
 	iframe {
@@ -65,6 +71,9 @@
 
 	.overlay {
 		position: absolute;
-		inset: 0;
+		left: var(--_overlay-inset-left, var(--overlay-inset-left, var(--_overlay-inset, var(--overlay-inset))));
+		right: var(--_overlay-inset-right, var(--overlay-inset-right, var(--_overlay-inset, var(--overlay-inset))));
+		bottom: var(--_overlay-inset-bottom, var(--overlay-inset-bottom, var(--_overlay-inset, var(--overlay-inset))));
+		top: var(--_overlay-inset-top, var(--overlay-inset-top, var(--_overlay-inset, var(--overlay-inset))));
 	}
 }

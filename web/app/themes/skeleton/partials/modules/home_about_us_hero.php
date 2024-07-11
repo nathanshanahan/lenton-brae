@@ -56,7 +56,7 @@ $our_story = $args['our_story'] ?? '';
 				endif; ?>
 			</div>
 
-			<div class="<?= $block ?>__graphics-lockup">
+			<div class="<?= $block ?>__graphics-lockup graphics-lockup">
 				<?php if (!empty($our_story['media'])) :
 					partial('partials/media', '', [
 						'media' => $our_story['media'],
@@ -65,7 +65,7 @@ $our_story = $args['our_story'] ?? '';
 					]);
 				endif; ?>
 
-				<svg class="<?= $block . '__graphic-arch'; ?>" width="448" height="604" viewBox="0 0 448 604" fill="none">
+				<svg class="<?= $block . '__graphic-arch'; ?> graphic-arch" width="448" height="604" viewBox="0 0 448 604" fill="none">
 					<use xlink:href="#graphic-arch"></use>
 				</svg>
 

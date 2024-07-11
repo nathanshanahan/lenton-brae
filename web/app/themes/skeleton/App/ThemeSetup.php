@@ -4,16 +4,18 @@ namespace App;
 
 use \App\Bone\ViteAssets;
 
-class ThemeSetup {
+class ThemeSetup
+{
 
-	public function __construct() {
+	public function __construct()
+	{
 
 		global $assets;
 		$assets = new ViteAssets();
 
 		add_filter('use_block_editor_for_post', '__return_false');
 
-		add_action( 'after_setup_theme', function() {
+		add_action('after_setup_theme', function () {
 			$this->addThemeSupports();
 			$this->removeThemeSupports();
 			$this->registerMenus();
@@ -22,7 +24,7 @@ class ThemeSetup {
 
 		$this->setupThemeClasses(); // should this be in after_setup_theme?
 
-		add_action( 'init', self::class . '::registerPostTypes' );
+		add_action('init', self::class . '::registerPostTypes');
 
 		/**
 		 * Nav - clean up classes and IDs
@@ -31,7 +33,8 @@ class ThemeSetup {
 		add_filter('nav_menu_item_id', [$this, 'navIdFilter'], 100, 4);
 	}
 
-	public static function setupThemeClasses() : void {
+	public static function setupThemeClasses(): void
+	{
 		new \App\Bone\Security();
 		new \App\Bone\Maintenance();
 		new \App\Bone\JWTHelper();
@@ -46,7 +49,8 @@ class ThemeSetup {
 		new \App\TinyMCE();
 	}
 
-	public static function registerPostTypes() : void {
+	public static function registerPostTypes(): void
+	{
 		/**
 		 * Add post type registrations here. E.g.:
 		 *
@@ -56,12 +60,14 @@ class ThemeSetup {
 		self::addPageSupports();
 	}
 
-	private static function addPageSupports() : void {
+	private static function addPageSupports(): void
+	{
 		add_post_type_support('page', 'excerpt');
-		register_taxonomy_for_object_type( 'post_tag', 'page' );
+		register_taxonomy_for_object_type('post_tag', 'page');
 	}
 
-	public static function addThemeSupports() : void {
+	public static function addThemeSupports(): void
+	{
 		add_theme_support('title-tag');
 		add_theme_support('post-thumbnails');
 		add_theme_support('responsive-embeds');
@@ -76,14 +82,17 @@ class ThemeSetup {
 		]);
 	}
 
-	public static function removeThemeSupports() : void {
+	public static function removeThemeSupports(): void
+	{
 		remove_theme_support('block-templates');
 		remove_theme_support('core-block-patterns');
 	}
 
-	public static function registerMenus() : void {
+	public static function registerMenus(): void
+	{
 		register_nav_menus([
 			'primary_navigation' => __('Primary Navigation'),
+			'footer_navigation' => __('Footer Navigation'),
 		]);
 	}
 
@@ -98,7 +107,7 @@ class ThemeSetup {
 		\WP_Post $menu_item,
 		\stdClass $args,
 		int $depth
-	) : array {
+	): array {
 		$allow_list = [
 			'current-menu-item',
 			'menu-item-has-children',
@@ -114,7 +123,7 @@ class ThemeSetup {
 		\WP_Post $item,
 		\stdClass $args,
 		int $depth
-	) : string {
+	): string {
 		$base = $args->menu_id ?? 'menu';
 
 		return "{$base}-{$item->post_name}";
