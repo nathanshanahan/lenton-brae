@@ -1,9 +1,11 @@
 :root {
-	--media-wide-aspect-ratio: 2880/1344;
-	--media-portait-aspect-ratio: 428/490;
-	--media-landscape-aspect-ratio: 364/200;
-	--media-video-aspect-ratio: 16/9;
-	--media-banner-aspect-ratio: 1800/852;
+	--media-wide-aspect-ratio: 2880 / 1344;
+	--media-portait-aspect-ratio: 428 / 490;
+	--media-landscape-aspect-ratio: 364 / 200;
+	--media-video-aspect-ratio: 16 / 9;
+	--media-banner-aspect-ratio: 1800 / 852;
+	--media-square-aspect-ratio: 1 / 1;
+	--media-map-svg-aspect-ratio: 700 / 794;
 	--caption-padding-inline: 0.75rem;
 	--overlay-inset: 0;
 }
@@ -31,6 +33,10 @@
 		aspect-ratio: var(--_media-wide-aspect-ratio, var(--media-wide-aspect-ratio));
 	}
 
+	&--square {
+		aspect-ratio: var(--_media-sqaure-aspect-ratio, var(--media-square-aspect-ratio));
+	}
+
 	&--portrait {
 		aspect-ratio: var(--_media-portait-aspect-ratio, var(--media-portait-aspect-ratio));
 	}
@@ -45,6 +51,10 @@
 
 	&--banner {
 		aspect-ratio: var(--_media-banner-aspect-ratio, var(--media-banner-aspect-ratio));
+	}
+
+	&--map {
+		aspect-ratio: var(--_media-map-svg-aspect-ratio, var(--media-map-svg-aspect-ratio));
 	}
 
 	img,

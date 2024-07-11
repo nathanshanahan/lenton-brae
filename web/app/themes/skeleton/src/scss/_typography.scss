@@ -109,6 +109,15 @@
  	text-transform: uppercase;
  }
 
+ .type-style-h4 em {
+ 	font-family: "garamond-premier-pro", serif;
+ 	font-size: var(--type-size-h4);
+ 	line-height: var(--type-line-height-h4);
+ 	font-weight: 400;
+ 	font-style: italic;
+ 	text-transform: none;
+ }
+
  .type-style-h4-post {
  	font-family: "brandon-grotesque", sans-serif;
  	font-size: var(--type-size-h4-post);

@@ -9,6 +9,7 @@ import GlobalMeasurements from './modules/global-measurements';
 import { watchForReveals } from './modules/reveals';
 import { rerunGravityFormsScripts } from './modules/gravity-forms';
 import { initCarousel } from './modules/carousels';
+import { initAccordion } from './modules/accordion';
 
 const options = {
 	linkSelector: `a[href^="${window.location.origin}"]:not([data-no-swup]):not([target="_blank"]), a[href^="/"]:not([data-no-swup]):not([target="_blank"]), a[href^="#"]:not([data-no-swup]):not([target="_blank"])`,
@@ -32,12 +33,14 @@ window.addEventListener('DOMContentLoaded', () => {
 	GlobalMeasurements.start();
 	watchForReveals();
 	initCarousel();
+	initAccordion();
 })
 
 swup.hooks.on('content:replace', (e) => {
 	watchForReveals();
 	rerunGravityFormsScripts();
 	initCarousel();
+	initAccordion();
 
 	const currentPage = swup.cache.getCurrentPage();
 

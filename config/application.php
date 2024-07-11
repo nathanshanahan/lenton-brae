@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Your base production configuration goes in this file. Environment-specific
  * overrides go in their respective config/environments/{{WP_ENV}}.php file.
@@ -30,18 +31,18 @@ $webroot_dir = $root_dir . '/web';
  * .env.local will override .env if it exists
  */
 if (file_exists($root_dir . '/.env')) {
-    $env_files = file_exists($root_dir . '/.env.local')
-        ? ['.env', '.env.local']
-        : ['.env'];
+	$env_files = file_exists($root_dir . '/.env.local')
+		? ['.env', '.env.local']
+		: ['.env'];
 
-    $dotenv = Dotenv\Dotenv::createUnsafeImmutable($root_dir, $env_files, false);
+	$dotenv = Dotenv\Dotenv::createUnsafeImmutable($root_dir, $env_files, false);
 
-    $dotenv->load();
+	$dotenv->load();
 
-    $dotenv->required(['WP_HOME', 'WP_SITEURL']);
-    if (!env('DATABASE_URL')) {
-        $dotenv->required(['DB_NAME', 'DB_USER', 'DB_PASSWORD']);
-    }
+	$dotenv->required(['WP_HOME', 'WP_SITEURL']);
+	if (!env('DATABASE_URL')) {
+		$dotenv->required(['DB_NAME', 'DB_USER', 'DB_PASSWORD']);
+	}
 }
 
 /**
@@ -54,7 +55,7 @@ define('WP_ENV', env('WP_ENV') ?: 'production');
  * Infer WP_ENVIRONMENT_TYPE based on WP_ENV
  */
 if (!env('WP_ENVIRONMENT_TYPE') && in_array(WP_ENV, ['production', 'staging', 'development', 'local'])) {
-    Config::define('WP_ENVIRONMENT_TYPE', WP_ENV);
+	Config::define('WP_ENVIRONMENT_TYPE', WP_ENV);
 }
 
 /**
@@ -74,7 +75,7 @@ Config::define('WP_CONTENT_URL', Config::get('WP_HOME') . Config::get('CONTENT_D
  * DB settings
  */
 if (env('DB_SSL')) {
-    Config::define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
+	Config::define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 }
 
 Config::define('DB_NAME', env('DB_NAME'));
@@ -86,12 +87,12 @@ Config::define('DB_COLLATE', '');
 $table_prefix = env('DB_PREFIX') ?: 'wp_';
 
 if (env('DATABASE_URL')) {
-    $dsn = (object) parse_url(env('DATABASE_URL'));
+	$dsn = (object) parse_url(env('DATABASE_URL'));
 
-    Config::define('DB_NAME', substr($dsn->path, 1));
-    Config::define('DB_USER', $dsn->user);
-    Config::define('DB_PASSWORD', isset($dsn->pass) ? $dsn->pass : null);
-    Config::define('DB_HOST', isset($dsn->port) ? "{$dsn->host}:{$dsn->port}" : $dsn->host);
+	Config::define('DB_NAME', substr($dsn->path, 1));
+	Config::define('DB_USER', $dsn->user);
+	Config::define('DB_PASSWORD', isset($dsn->pass) ? $dsn->pass : null);
+	Config::define('DB_HOST', isset($dsn->port) ? "{$dsn->host}:{$dsn->port}" : $dsn->host);
 }
 
 /**
@@ -134,13 +135,13 @@ ini_set('display_errors', '0');
  * See https://codex.wordpress.org/Function_Reference/is_ssl#Notes
  */
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
-    $_SERVER['HTTPS'] = 'on';
+	$_SERVER['HTTPS'] = 'on';
 }
 
 $env_config = __DIR__ . '/environments/' . WP_ENV . '.php';
 
 if (file_exists($env_config)) {
-    require_once $env_config;
+	require_once $env_config;
 }
 
 Config::apply();
@@ -149,7 +150,7 @@ Config::apply();
  * Bootstrap WordPress
  */
 if (!defined('ABSPATH')) {
-    define('ABSPATH', $webroot_dir . '/wp/');
+	define('ABSPATH', $webroot_dir . '/wp/');
 }
 
 
@@ -161,13 +162,13 @@ define('KINSTAMU_WHITELABEL', true);
 /**
  * Whether or not to run in headless mode
  */
-$bone_headless = env('BONE_HEADLESS')? : false;
+$bone_headless = env('BONE_HEADLESS') ?: false;
 define('BONE_HEADLESS', $bone_headless);
 
 /**
  * Front end url for headless mode
  */
-$bone_headless_url = env('BONE_HEADLESS_FRONTEND_URL')? : false;
+$bone_headless_url = env('BONE_HEADLESS_FRONTEND_URL') ?: false;
 define('BONE_HEADLESS_FRONTEND_URL', $bone_headless_url);
 
 /**
@@ -175,36 +176,36 @@ define('BONE_HEADLESS_FRONTEND_URL', $bone_headless_url);
  */
 // Gravity Forms
 $gravity_forms_license = env('WP_PLUGIN_GF_KEY') ?: '';
-if(!empty($gravity_forms_license)) {
+if (!empty($gravity_forms_license)) {
 	define('GF_LICENSE_KEY', $gravity_forms_license);
 }
 
 // Migrate DB Pro
 $wpmdbpro_key = env('WP_PLUGIN_MIGRATE_DB_PRO') ?: '';
-if(!empty($wpmdbpro_key)) {
+if (!empty($wpmdbpro_key)) {
 	define('WPMDB_LICENCE', $wpmdbpro_key);
 }
 
 // ACF Pro Key
 $acf_pro_key = env('ACF_PRO_KEY') ?: '';
-if(!empty($acf_pro_key)) {
+if (!empty($acf_pro_key)) {
 	define('ACF_PRO_LICENSE', $acf_pro_key);
 }
 
 // Smush API Key - used for Smush Pro Plugin
 $wpmudev_key = env('WP_PLUGIN_WPMUDEV') ?: '';
-if(!empty($wpmudev_key)) {
+if (!empty($wpmudev_key)) {
 	define('WPMUDEV_APIKEY', $wpmudev_key);
 }
 
 // SearchWP Key
 $searchwp_key = env('WP_PLUGIN_SEARCH_WP_KEY') ?: '';
-if(!empty($searchwp_key)) {
+if (!empty($searchwp_key)) {
 	define('SEARCHWP_LICENSE_KEY', $searchwp_key);
 }
 
 // JWT Auth Secret
 $jwt_auth_secret = env('JWT_AUTH_SECRET_KEY') ?: '';
-if(!empty($jwt_auth_secret)) {
+if (!empty($jwt_auth_secret)) {
 	define('JWT_AUTH_SECRET_KEY', $jwt_auth_secret);
 }
