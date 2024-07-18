@@ -122,7 +122,8 @@
  	text-transform: none;
  }
 
- .type-style-h4-post {
+ .type-style-h4-post,
+ .type-style-h4-bold {
  	font-family: "brandon-grotesque", sans-serif;
  	font-size: var(--type-size-h4-post);
  	line-height: var(--type-line-height-h4);
@@ -135,6 +136,14 @@
  	font-size: var(--type-size-h5);
  	line-height: var(--type-line-height-h5);
  	font-weight: 400;
+ 	text-transform: uppercase;
+ }
+
+ .type-style-h5-bold {
+ 	font-family: 'Cooper Hewitt Bold', sans-serif;
+ 	font-size: var(--type-size-h5);
+ 	line-height: var(--type-line-height-h5);
+ 	font-weight: 700;
  	text-transform: uppercase;
  }
 

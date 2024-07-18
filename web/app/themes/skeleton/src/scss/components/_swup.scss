@@ -1,11 +1,41 @@
-.swup-page-loader
-{
-	opacity: 1;
-	transition: opacity 240ms linear 96ms;
+// .swup-page-loader {
+// 	opacity: 1;
+// 	transition: opacity 240ms linear 96ms;
 
-	html.is-animating &
-	{
+// 	html.is-animating & {
+// 		opacity: 0;
+// 		transition: opacity 240ms linear;
+// 	}
+// }
+
+.swup-page-loader {
+	transition: all 500ms var(--ease);
+	transform: translateY(0);
+	opacity: 1;
+}
+
+html.is-leaving {
+	.swup-page-loader {
+		transform: translateY(2rem);
 		opacity: 0;
-		transition: opacity 240ms linear;
 	}
 }
+
+html.is-rendering {
+	.swup-page-loader {
+		transform: translateY(-2rem);
+		opacity: 0;
+	}
+}
+
+// html.is-changing {
+// 	* {
+// 		box-shadow: 0 0 0 1px green;
+// 	}
+// }
+
+// html.is-rendering {
+// 	* {
+// 		box-shadow: 0 0 0 1px black;
+// 	}
+// }

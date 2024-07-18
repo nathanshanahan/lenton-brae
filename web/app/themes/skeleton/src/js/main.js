@@ -10,6 +10,7 @@ import { watchForReveals } from './modules/reveals';
 import { rerunGravityFormsScripts } from './modules/gravity-forms';
 import { initCarousel } from './modules/carousels';
 import { initAccordion } from './modules/accordion';
+import { initLoadMore } from './modules/load-more';
 
 const options = {
 	linkSelector: `a[href^="${window.location.origin}"]:not([data-no-swup]):not([target="_blank"]), a[href^="/"]:not([data-no-swup]):not([target="_blank"]), a[href^="#"]:not([data-no-swup]):not([target="_blank"])`,
@@ -34,6 +35,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	watchForReveals();
 	initCarousel();
 	initAccordion();
+	initLoadMore();
 })
 
 swup.hooks.on('content:replace', (e) => {
@@ -41,17 +43,6 @@ swup.hooks.on('content:replace', (e) => {
 	rerunGravityFormsScripts();
 	initCarousel();
 	initAccordion();
-
-	const currentPage = swup.cache.getCurrentPage();
-
-	if (currentPage.originalContent) {
-		const doc = new DOMParser().parseFromString(currentPage.originalContent, 'text/html');
-		const dataset = doc.body.dataset;
-
-		const sets = Object.keys(dataset);
-		sets.forEach(d => {
-			document.body.dataset[d] = dataset[d];
-		});
-	}
+	initLoadMore();
 });
 

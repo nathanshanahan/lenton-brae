@@ -8,11 +8,28 @@
 
 	<?php wp_head(); ?>
 	<?php partial('partials/tracking-head'); ?>
+
+	<style>
+		[data-color-theme="textured"] {
+			--background-image: url('../assets/background-texture-8a90bd8d.webp');
+		}
+	</style>
+
+	<script type="text/javascript">
+		<?php $site_url = get_site_url(); ?>
+
+		var load_more_params = {
+			"ajaxurl": "<?= $site_url ?>\/wp-admin\/admin-ajax.php",
+			"posts_per_page": 9
+		};
+	</script>
 </head>
 
-<?php $page_color_theme = get_field('page_color_theme', get_the_ID()) ?? 'light'; ?>
+<?php $page_color_theme = 'color-theme--' . get_field('page_color_theme', get_the_ID()) ?? 'light'; ?>
 
-<body <?php body_class(); ?> data-color-theme="<?= $page_color_theme ?>">
+
+
+<body <?php body_class($page_color_theme); ?>>
 	<?php partial('partials/svg-symbols'); ?>
 
 	<?php partial('partials/tracking-body');

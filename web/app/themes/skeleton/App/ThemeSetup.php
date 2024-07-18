@@ -46,6 +46,7 @@ class ThemeSetup
 
 		new \App\ACF();
 		new \App\SiteOptions();
+
 		new \App\TinyMCE();
 	}
 

@@ -1,0 +1,61 @@
+body.login {
+
+	--_feature-color: #A46C4D;
+
+	background-color: black;
+
+	#login {
+		width: fit-content;
+	}
+
+	#loginform {
+		background-color: black;
+		color: white;
+		border: none;
+		padding: none;
+	}
+
+	#login-message {
+		background-color: black;
+		color: white;
+	}
+
+	form {
+		padding: 0;
+	}
+
+	h1 a {
+		width: 100%;
+		height: 90px;
+		background-size: contain;
+		margin: 0;
+	}
+
+	.wp-core-ui .button-primary,
+	.button {
+		@include buttonReset;
+		font-family: "brandon-grotesque", sans-serif;
+		font-size: var(--_type-size-button, var(--type-size-button));
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05rem;
+		min-width: max-content;
+		background-color: var(--_feature-color, var(--feature-color));
+		color: var(--color-white);
+		text-transform: uppercase;
+		border: 1px solid var(--_feature-color, var(--feature-color));
+		padding: 1rem;
+		border-radius: 50em;
+		transition: all var(--transition-timing) var(--ease);
+		width: fit-content;
+		min-width: 5.625rem;
+		text-align: center;
+
+		&:hover,
+		&:focus-visible {
+			background-color: transparent;
+			color: var(--_feature-color, var(--feature-color));
+			border-color: var(--_feature-color, var(--feature-color));
+		}
+	}
+}

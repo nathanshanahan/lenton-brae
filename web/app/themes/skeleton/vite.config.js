@@ -11,10 +11,10 @@ const distDir = './dist';
 const assetsDir = 'assets';
 
 const entries = [
-	{ name: 'main', source: `${srcDir}/js/main.js`},
-	{ name: 'admin', source: `${srcDir}/js/admin.js`},
-	{ name: 'main-css', source: `${srcDir}/scss/main-css.js`},
-	{ name: 'admin-css', source: `${srcDir}/scss/admin-css.js`},
+	{ name: 'main', source: `${srcDir}/js/main.js` },
+	{ name: 'admin', source: `${srcDir}/js/admin.js` },
+	{ name: 'main-css', source: `${srcDir}/scss/main-css.js` },
+	{ name: 'admin-css', source: `${srcDir}/scss/admin-css.js` },
 ];
 
 function formatEntriesForRollup(entries) {
@@ -44,7 +44,7 @@ export default defineConfig({
 		{
 			name: "Create Manifest",
 			writeBundle: async (data, output) => {
-				console.log({output})
+				console.log({ output })
 				// return;
 				// // console.log("creating manifest", {data});
 				// console.log("creating manifest", Object.entries(output).map(([key, out]) => {
@@ -81,7 +81,7 @@ export default defineConfig({
 				const manifest = {};
 				for (const entry of Object.values(output)) {
 					// console.log({entry})
-					const {name, fileName} = entry;
+					const { name, fileName } = entry;
 
 
 					const isCssEntrypoint = entry.viteMetadata?.importedCss?.size;
@@ -167,7 +167,7 @@ export default defineConfig({
 			name: "Reload on JS or PHP changes",
 			apply: 'serve',
 			configureServer: (server) => {
-				const {watcher, ws} = server;
+				const { watcher, ws } = server;
 
 				function maybeReload(path) {
 					const isPhp = path.endsWith('.php');

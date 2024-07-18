@@ -1,5 +1,5 @@
 main {
-	body:not(.home) & {
+	body:not(.color-theme--transparent) & {
 		padding-top: var(--masthead-height);
 	}
 

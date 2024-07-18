@@ -647,7 +647,10 @@
                                                         "tan": "Tan",
                                                         "green": "Green",
                                                         "blue": "Blue",
-                                                        "brown": "Brown"
+                                                        "brown": "Brown",
+                                                        "textured": "Textured",
+                                                        "transparent": "White Text - Transparent Background",
+                                                        "transparent-dark": "Black Text - Transparent Background"
                                                     },
                                                     "default_value": false,
                                                     "return_format": "value",
@@ -673,7 +676,7 @@
                                                 "class": "",
                                                 "id": ""
                                             },
-                                            "layout": "table",
+                                            "layout": "block",
                                             "min": 0,
                                             "max": 0,
                                             "collapsed": "",
@@ -782,7 +785,10 @@
                                                         "tan": "Tan",
                                                         "green": "Green",
                                                         "blue": "Blue",
-                                                        "brown": "Brown"
+                                                        "brown": "Brown",
+                                                        "textured": "Textured",
+                                                        "transparent": "White Text - Transparent Background",
+                                                        "transparent-dark": "Black Text - Transparent Background"
                                                     },
                                                     "default_value": false,
                                                     "return_format": "value",
@@ -915,7 +921,10 @@
                                                         "tan": "Tan",
                                                         "green": "Green",
                                                         "blue": "Blue",
-                                                        "brown": "Brown"
+                                                        "brown": "Brown",
+                                                        "textured": "Textured",
+                                                        "transparent": "White Text - Transparent Background",
+                                                        "transparent-dark": "Black Text - Transparent Background"
                                                     },
                                                     "default_value": false,
                                                     "return_format": "value",
@@ -1061,6 +1070,104 @@
                                             ],
                                             "display": "seamless",
                                             "layout": "",
+                                            "prefix_label": 0,
+                                            "prefix_name": 0
+                                        }
+                                    ],
+                                    "min": "",
+                                    "max": ""
+                                },
+                                "layout_66932d49d0cd4": {
+                                    "key": "layout_66932d49d0cd4",
+                                    "name": "news_archive",
+                                    "label": "News Archive",
+                                    "display": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_66932d49d0cda",
+                                            "label": "Content",
+                                            "name": "",
+                                            "aria-label": "",
+                                            "type": "tab",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "placement": "left",
+                                            "endpoint": 0
+                                        },
+                                        {
+                                            "key": "field_66932d49d0cdb",
+                                            "label": "Featured Posts",
+                                            "name": "featured_posts",
+                                            "aria-label": "",
+                                            "type": "relationship",
+                                            "instructions": "The Featured Posts section allows you to highlight specific Posts or Events at the top of the page. Posts selected here will be excluded from the regular news listings which appear below.",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "post_type": [
+                                                "post",
+                                                "event"
+                                            ],
+                                            "post_status": "",
+                                            "taxonomy": "",
+                                            "filters": [
+                                                "search",
+                                                "post_type",
+                                                "taxonomy"
+                                            ],
+                                            "return_format": "object",
+                                            "min": "",
+                                            "max": "",
+                                            "elements": "",
+                                            "bidirectional": 0,
+                                            "bidirectional_target": []
+                                        },
+                                        {
+                                            "key": "field_66932d49d0cdc",
+                                            "label": "Options",
+                                            "name": "",
+                                            "aria-label": "",
+                                            "type": "tab",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "placement": "left",
+                                            "endpoint": 0
+                                        },
+                                        {
+                                            "key": "field_66932d49d0cdd",
+                                            "label": "Module Options",
+                                            "name": "module_options",
+                                            "aria-label": "",
+                                            "type": "clone",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "clone": [
+                                                "group_661264a8c4303"
+                                            ],
+                                            "display": "seamless",
+                                            "layout": "block",
                                             "prefix_label": 0,
                                             "prefix_name": 0
                                         }
@@ -1487,7 +1594,7 @@
                                             "required": 0,
                                             "conditional_logic": 0,
                                             "wrapper": {
-                                                "width": "50",
+                                                "width": "33",
                                                 "class": "",
                                                 "id": ""
                                             },
@@ -1501,6 +1608,34 @@
                                             "layout": "horizontal"
                                         },
                                         {
+                                            "key": "field_669328343f62e",
+                                            "label": "Display Border",
+                                            "name": "has_border",
+                                            "aria-label": "",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": [
+                                                [
+                                                    {
+                                                        "field": "field_668f5cd0e9993",
+                                                        "operator": "==",
+                                                        "value": "text-first"
+                                                    }
+                                                ]
+                                            ],
+                                            "wrapper": {
+                                                "width": "33",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui": 0,
+                                            "ui_on_text": "",
+                                            "ui_off_text": ""
+                                        },
+                                        {
                                             "key": "field_668f5cf7e9994",
                                             "label": "Alignment",
                                             "name": "alignment",
@@ -1510,7 +1645,7 @@
                                             "required": 0,
                                             "conditional_logic": 0,
                                             "wrapper": {
-                                                "width": "50",
+                                                "width": "33",
                                                 "class": "",
                                                 "id": ""
                                             },
@@ -2444,6 +2579,152 @@
                                     "min": "",
                                     "max": ""
                                 },
+                                "layout_66908c0e74a58": {
+                                    "key": "layout_66908c0e74a58",
+                                    "name": "form",
+                                    "label": "Form",
+                                    "display": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_66908c0e74a5e",
+                                            "label": "Content",
+                                            "name": "",
+                                            "aria-label": "",
+                                            "type": "tab",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "placement": "left",
+                                            "endpoint": 0
+                                        },
+                                        {
+                                            "key": "field_66908c1b74a75",
+                                            "label": "Form",
+                                            "name": "form",
+                                            "aria-label": "",
+                                            "type": "group",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "layout": "block",
+                                            "sub_fields": [
+                                                {
+                                                    "key": "field_66908c4874a76",
+                                                    "label": "Title",
+                                                    "name": "title",
+                                                    "aria-label": "",
+                                                    "type": "text",
+                                                    "instructions": "",
+                                                    "required": 0,
+                                                    "conditional_logic": 0,
+                                                    "wrapper": {
+                                                        "width": "",
+                                                        "class": "",
+                                                        "id": ""
+                                                    },
+                                                    "default_value": "",
+                                                    "maxlength": "",
+                                                    "placeholder": "",
+                                                    "prepend": "",
+                                                    "append": ""
+                                                },
+                                                {
+                                                    "key": "field_66908c5474a77",
+                                                    "label": "Content",
+                                                    "name": "content",
+                                                    "aria-label": "",
+                                                    "type": "wysiwyg",
+                                                    "instructions": "",
+                                                    "required": 0,
+                                                    "conditional_logic": 0,
+                                                    "wrapper": {
+                                                        "width": "",
+                                                        "class": "",
+                                                        "id": ""
+                                                    },
+                                                    "default_value": "",
+                                                    "tabs": "all",
+                                                    "toolbar": "standard",
+                                                    "media_upload": 1,
+                                                    "delay": 0
+                                                },
+                                                {
+                                                    "key": "field_66908c7274a78",
+                                                    "label": "Form ID",
+                                                    "name": "form_id",
+                                                    "aria-label": "",
+                                                    "type": "number",
+                                                    "instructions": "",
+                                                    "required": 0,
+                                                    "conditional_logic": 0,
+                                                    "wrapper": {
+                                                        "width": "",
+                                                        "class": "",
+                                                        "id": ""
+                                                    },
+                                                    "default_value": "",
+                                                    "min": "",
+                                                    "max": "",
+                                                    "placeholder": "",
+                                                    "step": "",
+                                                    "prepend": "",
+                                                    "append": ""
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "key": "field_66908c0e74a73",
+                                            "label": "Options",
+                                            "name": "",
+                                            "aria-label": "",
+                                            "type": "tab",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "placement": "left",
+                                            "endpoint": 0
+                                        },
+                                        {
+                                            "key": "field_66908c0e74a74",
+                                            "label": "Module Options",
+                                            "name": "module_options",
+                                            "aria-label": "",
+                                            "type": "clone",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "clone": [
+                                                "group_661264a8c4303"
+                                            ],
+                                            "display": "seamless",
+                                            "layout": "block",
+                                            "prefix_label": 0,
+                                            "prefix_name": 0
+                                        }
+                                    ],
+                                    "min": "",
+                                    "max": ""
+                                },
                                 "layout_6663ac1d269d3": {
                                     "key": "layout_6663ac1d269d3",
                                     "name": "spacer",
@@ -2578,5 +2859,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720732408
+    "modified": 1720931105
 }

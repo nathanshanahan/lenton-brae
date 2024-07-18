@@ -6,8 +6,39 @@
 	--masthead-color: var(--color-black);
 }
 
+.is-animating {
+	body.color-theme--transparent {
+		background-color: var(--color-black);
+	}
+}
+
+body.color-theme--light {
+	.masthead {
+		--_background-color: var(--color-white);
+	}
+}
+
+body.color-theme--dark {
+	.masthead {
+		--_background-color: var(--color-black);
+	}
+}
+
+body.color-theme--transparent {
+	.masthead {
+		--_background-color: transparent;
+		color: var(--color-white);
+	}
+}
+
+body.color-theme--transparent-dark {
+	.masthead {
+		--_background-color: transparent;
+		color: var(--color-black);
+	}
+}
+
 body.home {
-	--_masthead-color: var(--color-white);
 
 	.masthead {
 		position: absolute;
@@ -16,11 +47,11 @@ body.home {
 	.lenton-brae-logo {
 		fill: currentColor;
 		transform: scale(1);
-		transition: all 5s var(--ease);
+		transition: all 1s var(--ease);
 
 		.margaret-river {
 			fill: currentColor;
-			transition: all 5s var(--ease);
+			transition: all 1s var(--ease);
 		}
 	}
 }
@@ -29,10 +60,10 @@ body.home {
 	fill: currentColor;
 	transform: scale(0.8);
 	transform-origin: center top;
-	transition: all 5s var(--ease);
+	transition: all 1s var(--ease);
 
 	.margaret-river {
-		transition: all 5s var(--ease);
+		transition: all 1s var(--ease);
 		fill: var(--_color-feature, var(--color-feature));
 	}
 }
@@ -82,7 +113,6 @@ body.home {
 	}
 
 }
-
 
 .masthead-menu {
 	display: flex;

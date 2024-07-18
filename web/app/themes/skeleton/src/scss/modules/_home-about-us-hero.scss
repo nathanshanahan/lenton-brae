@@ -31,24 +31,7 @@
 		flex-direction: column;
 		gap: var(--ourstory-content-gap);
 		border-left: var(--ourstory-border-width) solid var(--color-feature);
-
 	}
-
-	// &__graphics-lockup {
-	// 	margin-block: auto;
-	// 	position: relative;
-	// }
-
-	// &__graphic-arch {
-	// 	color: var(--color-feature);
-	// 	position: absolute;
-	// 	top: 50%;
-	// 	right: 25%;
-	// 	left: 6.8%;
-	// 	transform: translateY(-50%);
-	// 	max-width: 60%;
-	// 	height: auto;
-	// }
 
 	.user-html p:not([class]),
 	.user-html li:not([class]) {

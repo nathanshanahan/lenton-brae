@@ -1,0 +1,23 @@
+.m-form {
+	--form-content-padding-inline: 7rem;
+	--padding-top: 5rem;
+	--padding-bottom: 5rem;
+	--form-content-spacing-block: 2rem;
+
+	--gf-local-bg-color: red;
+
+	&__form-lockup {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	&__form-title {
+		grid-column: span 2;
+		color: var(--_feature-color, var(--feature-color));
+		padding-bottom: var(--form-content-spacing-block);
+	}
+
+	&__form-content-lockup {
+		padding-right: var(--form-content-padding-inline);
+	}
+}

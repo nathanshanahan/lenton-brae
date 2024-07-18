@@ -16,8 +16,7 @@ class WP_Cleanup
 		/**
 		 * Disables Comments
 		 */
-		if( $this->disable_comments )
-		{
+		if ($this->disable_comments) {
 			//Redirect users accessing comments.php
 			add_action('admin_init', [$this, 'AdminInit']);
 
@@ -44,7 +43,7 @@ class WP_Cleanup
 		/**
 		 * Force Yoast to the bottom of screen
 		 */
-		add_filter( 'wpseo_metabox_prio', function( $priority ) {
+		add_filter('wpseo_metabox_prio', function ($priority) {
 			return 'low';
 		});
 
@@ -53,22 +52,21 @@ class WP_Cleanup
 		 *
 		 * @param array $priority Metabox Priority.
 		 */
-		add_filter( 'rank_math/metabox/priority', function( $priority ) {
+		add_filter('rank_math/metabox/priority', function ($priority) {
 			return 'low';
 		});
 
 		/**
 		 * Modify MIME types to include SVGs
 		 */
-		add_filter( 'upload_mimes', [$this, 'ModifyMimeTypes']);
+		add_filter('upload_mimes', [$this, 'ModifyMimeTypes']);
 
 		/**
 		 * Loads a custom admin.css file on the login page
 		 */
-		if( $this->admin_branding )
-		{
+		if ($this->admin_branding) {
 			//Add in a stylesheet to the login page
-			add_action('login_enqueue_scripts', [$this, 'LoginStyleSheet'] );
+			add_action('login_enqueue_scripts', [$this, 'LoginStyleSheet']);
 
 			//Change the footer text - 'Powered by WordPress' - done as Kinsta sometimes change it
 			add_filter('admin_footer_text', [$this, 'adminFooter'], 11);
@@ -80,12 +78,9 @@ class WP_Cleanup
 		/**
 		 * Disable Emojis
 		 */
-		if( $this->disable_emojis )
-		{
-			add_action( 'init', [$this, 'DisableEmojis'] );
+		if ($this->disable_emojis) {
+			add_action('init', [$this, 'DisableEmojis']);
 		}
-
-
 	}
 
 	/**
@@ -95,20 +90,17 @@ class WP_Cleanup
 	{
 		global $page_now;
 
-		if( 'edit-comments.php' == $page_now )
-		{
-			wp_redirect( admin_url() );
+		if ('edit-comments.php' == $page_now) {
+			wp_redirect(admin_url());
 			exit;
 		}
 
 		// Remove comments metabox from dashboard
-		remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
+		remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
 
 		// Disable support for comments and trackbacks in post types
-		foreach (get_post_types() as $post_type)
-		{
-			if (post_type_supports($post_type, 'comments'))
-			{
+		foreach (get_post_types() as $post_type) {
+			if (post_type_supports($post_type, 'comments')) {
 				remove_post_type_support($post_type, 'comments');
 				remove_post_type_support($post_type, 'trackbacks');
 			}
@@ -118,7 +110,7 @@ class WP_Cleanup
 	/**
 	 * Modifies the allowed MIME types to include SVG files
 	 */
-	public function ModifyMimeTypes( $allowed )
+	public function ModifyMimeTypes($allowed)
 	{
 		$allowed['svg'] = 'image/svg+xml';
 		return $allowed;
@@ -129,44 +121,38 @@ class WP_Cleanup
 	 */
 	public function LoadLoginPageACFOptions()
 	{
-		if( !function_exists('get_field') )
-		{
+		if (!function_exists('get_field')) {
 			//ACF not active
 			return;
 		}
 
 		$active = get_field('use_custom_branding', 'options');
 		$logo = get_field('custom_login_logo', 'options');
-		$background_colour = get_field('custom_login_background',' options');
+		$background_colour = get_field('custom_login_background', ' options');
 		$image_url = '';
-		if( !empty($logo) && is_array($logo) )
-		{
-			$image_url = $logo['sizes']['card'];
+		if (!empty($logo) && is_array($logo)) {
+			$image_url = $logo['sizes']['large'];
 		}
-		if( false == $active )
-		{
+		if (false == $active) {
 			//Not set to be active in site options
 			return;
 		}
 
 		//Output the background colour + logo
-		?>
+?>
 		<style>
-			<?php if( !empty($background_colour) ) : ?>
-			body
-			{
+			<?php if (!empty($background_colour)) : ?>body {
 				background: <?php echo $background_colour; ?>;
 			}
-			<?php endif; ?>
-			<?php if( !empty($image_url) ) : ?>
-			#login h1 a,
-			.login h1 a
-			{
+
+			<?php endif; ?><?php if (!empty($image_url)) : ?>#login h1 a,
+			.login h1 a {
 				background-image: url(<?php echo $image_url; ?>);
 			}
+
 			<?php endif; ?>
 		</style>
-		<?php
+<?php
 	}
 
 	/**
@@ -174,7 +160,9 @@ class WP_Cleanup
 	 */
 	public function LoginStyleSheet()
 	{
-		// wp_enqueue_style('sage/login.css', asset_path('styles/login.css'), false );
+		global $assets;
+		wp_enqueue_style('app-main-css', $assets->uri('main-css'), [], null);
+		// wp_enqueue_style('sage/login.css', asset_path('styles/login.css'), false);
 	}
 
 	/**
@@ -192,29 +180,26 @@ class WP_Cleanup
 	 */
 	public function DisableEmojis()
 	{
-		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-		remove_action( 'wp_print_styles', 'print_emoji_styles' );
-		remove_action( 'admin_print_styles', 'print_emoji_styles' );
-		remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-		remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
-		remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+		remove_action('wp_head', 'print_emoji_detection_script', 7);
+		remove_action('admin_print_scripts', 'print_emoji_detection_script');
+		remove_action('wp_print_styles', 'print_emoji_styles');
+		remove_action('admin_print_styles', 'print_emoji_styles');
+		remove_filter('the_content_feed', 'wp_staticize_emoji');
+		remove_filter('comment_text_rss', 'wp_staticize_emoji');
+		remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
 
 		// Remove from TinyMCE
-		add_filter( 'tiny_mce_plugins', [$this, 'DisableEmojisTinyMCE'] );
+		add_filter('tiny_mce_plugins', [$this, 'DisableEmojisTinyMCE']);
 	}
 
 	/**
 	 * Filter out the tinymce emoji plugin.
 	 */
-	public function DisableEmojisTinyMCE( $plugins )
+	public function DisableEmojisTinyMCE($plugins)
 	{
-		if ( is_array( $plugins ) )
-		{
-			return array_diff( $plugins, array( 'wpemoji' ) );
-		}
-		else
-		{
+		if (is_array($plugins)) {
+			return array_diff($plugins, array('wpemoji'));
+		} else {
 			return array();
 		}
 	}

@@ -8,10 +8,12 @@ $media = $args['media'] ?? '';
 $is_set_media = \App\validateMediaComponent($media);
 
 $atts['data-layout'] = $args['layout'] ?? 'text-first'; // text-first, media-first	
+$atts['data-has-border'] = $args['has_border'] ?? false; // true, false
 $atts['data-alignment'] = $args['alignment'] ?? 'center'; // top, center
 
 $has_arch = $args['add_arch'] ?? false;
 $arch_position = $args['arch_position'] ?? 'left'; // left, center 
+
 ?>
 
 <section <?= atts_to_str($atts) ?>>

@@ -19,7 +19,11 @@ function enqueue_scripts_styles()
 {
 	global $assets;
 
-	wp_enqueue_script_module('app-main', $assets->uri('main'), [], null);
+	wp_enqueue_script_module('app-main', $assets->uri('main'), [], null, true);
+	wp_localize_script('app-main', 'load_more_params', array(
+		'ajaxurl' => admin_url('admin-ajax.php'),
+		'posts_per_page' => 9,
+	));
 	wp_enqueue_style('app-main-css', $assets->uri('main-css'), [], null);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts_styles', 20);
@@ -141,3 +145,45 @@ function validateMediaComponent($media)
 
 	return true;
 }
+
+/**
+ * Load More Posts AJAX Handler
+ */
+function load_more_posts()
+{
+	$paged = isset($_POST['page']) ? intval($_POST['page']) + 1 : 1;
+	$featured_post_ids = isset($_POST['featured_post_ids']) ? json_decode(stripslashes($_POST['featured_post_ids']), true) : array();
+
+	// Ensure $featured_post_ids is an array
+	if (!is_array($featured_post_ids)) {
+		$featured_post_ids = array();
+	}
+
+	$args = array(
+		'post_type' => 'post',
+		'posts_per_page' => 9,
+		'paged' => $paged,
+		'orderby' => 'menu_order',
+		'order' => 'DESC',
+		'post__not_in' => array_map('intval', $featured_post_ids)
+	);
+
+	$query = new \WP_Query($args);
+
+	if ($query->have_posts()) :
+		while ($query->have_posts()) : $query->the_post();
+			try {
+				partial('partials/card-news', '', [
+					'post' => get_post(),
+				]);
+			} catch (\Exception $e) {
+				error_log($e->getMessage());
+			}
+		endwhile;
+	endif;
+
+	wp_reset_postdata();
+	die();
+}
+add_action('wp_ajax_load_more', __NAMESPACE__ . '\\load_more_posts');
+add_action('wp_ajax_nopriv_load_more', __NAMESPACE__ . '\\load_more_posts');

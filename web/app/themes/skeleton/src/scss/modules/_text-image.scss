@@ -18,6 +18,12 @@
 		--content-padding-right: 5rem;
 	}
 
+	&[data-has-border] {
+
+		--content-padding-left: 4rem;
+		--content-border: 0.5rem solid var(--_feature-color, var(--feature-color));
+	}
+
 	&[data-alignment="center"] {
 		--_margin-block: auto;
 	}
@@ -36,6 +42,7 @@
 		gap: var(--user-html-content-gap);
 		padding-left: var(--content-padding-left);
 		padding-right: var(--content-padding-right);
+		border-left: var(--content-border);
 	}
 
 	&__media-lockup {

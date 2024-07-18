@@ -70,7 +70,7 @@ $showcase = $args['showcase'] ?? '';
 					<div class="swiper-wrapper">
 
 						<?php foreach ($showcase as $index => $row) : ?>
-							<div class="swiper-slide <?= $block . '__slide' ?>" data-color-theme="<?= $row['colour_theme'] ?>" data-transition="scale-x">
+							<div class="swiper-slide <?= $block . '__slide' ?>" data-color-theme="<?= $row['colour_theme'] ?>" data-transition="opacity">
 
 								<?php if (isset($row['link']) && !empty($row['link']['url'])) : ?>
 

@@ -57,6 +57,14 @@
 		aspect-ratio: var(--_media-map-svg-aspect-ratio, var(--media-map-svg-aspect-ratio));
 	}
 
+	&--card-featured {
+		aspect-ratio: 714 / 512;
+	}
+
+	&--card-news {
+		aspect-ratio: 448 / 320;
+	}
+
 	&--directions-svg {
 		aspect-ratio: 590 / 688;
 	}
